@@ -66,6 +66,115 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Get vs Post" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/05/Get%20vs%20Post/" class="article-date">
+  <time datetime="2020-04-05T09:45:57.188Z" itemprop="datePublished">2020-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/05/Get%20vs%20Post/">Get vs Post</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="预备知识——从form表单说起"><a href="#预备知识——从form表单说起" class="headerlink" title="预备知识——从form表单说起"></a>预备知识——从form表单说起</h4><p>form表单收集数据，并且把数据提交到后端，其中的action属性可以填写要提交到的网址，其中的method属性可以填写get或者post来确定请求的类型；注意input一定要有name属性。</p>
+<h4 id="get和post请求的区别主要有两点"><a href="#get和post请求的区别主要有两点" class="headerlink" title="@get和post请求的区别主要有两点"></a>@get和post请求的区别主要有两点</h4><p>1.get请求的会将提交的数据显示在url的后面，post请求不会，所以post请求的更安全一些</p>
+<p>2.get请求有数据的上限，post请求没有。</p>
+<h4 id="Ajax发送数据的五个步骤"><a href="#Ajax发送数据的五个步骤" class="headerlink" title="Ajax发送数据的五个步骤"></a>Ajax发送数据的五个步骤</h4><ol>
+<li><pre><code>创建对象：
+var httprequest = new XMLHttprequest();
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2.</span><br></pre></td></tr></table></figure>
+设置请求方式和请求地址：
+httprequest.open(&quot;GET&quot;,&quot;liujing&quot;,true);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3.</span><br></pre></td></tr></table></figure>
+发送请求：
+httprequest.send()
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">4.</span><br></pre></td></tr></table></figure>
+监听状态变化：
+httprequest.onreadystatechange = function(ev2){
+if(httprequest.readyState === 4){
+//等于4就说明4个状态都完成了
+    if(httprequest.status&gt;=200&amp;&amp;httprequest.status&lt;300||httprequest.status===304){
+    console.log(&quot;接受到服务器返回的数据&quot;);
+    }else{
+    console.log(&quot;没有接受到服务器返回的数据&quot;);
+    }
+}
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">5. 处理返回的结果</span><br><span class="line"></span><br><span class="line">   注意点：在send请求的时候一定要写请求头（setRequestHeader），里面的内容不用改。</span><br><span class="line"></span><br><span class="line">   &#96;&#96;&#96;Ajax</span><br><span class="line">   xmlhttp.open(&quot;POST&quot;,&quot;ajax_test.asp&quot;,true);</span><br><span class="line">   xmlhttp.setRequestHeader(&quot;Content-type&quot;,&quot;application&#x2F;x-www-form-urlencoded&quot;);</span><br><span class="line">   xmlhttp.send(&quot;fname&#x3D;Bill&amp;lname&#x3D;Gates&quot;);</span><br></pre></td></tr></table></figure>
+</code></pre></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/05/Get%20vs%20Post/" data-id="ck8mzjvf00000ucubdtnf0h7h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ajax" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/04/Ajax/" class="article-date">
+  <time datetime="2020-04-04T01:04:04.132Z" itemprop="datePublished">2020-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/04/Ajax/">Ajax</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="js基础知识补充"><a href="#js基础知识补充" class="headerlink" title="js基础知识补充"></a>js基础知识补充</h4><p>（1）<iframe>标签用于加载网页在特定的位置</p>
+<p>（2）input 标签的value属性是用来设置文本框的内容</p>
+<p>（3）input标签的name属性：</p>
+<pre><code>只有设置了 name 属性的表单元素才能在提交表单时传递它们的值，因为服务端获取表单提交的数据是通过表单元素的 name 属性的值而得到的，没有 name 属性就无法得到表单元素提交给服务端的值 </code></pre><p>（4）input的onblur属性：</p>
+<p>​            失去焦点事件，与onfocus相反</p>
+<h4 id="Ajax的常用的参数"><a href="#Ajax的常用的参数" class="headerlink" title="Ajax的常用的参数"></a>Ajax的常用的参数</h4><p>url：待载入页面的URL地址</p>
+<p>data：待发送的key/value参数</p>
+<p>success：载入成功时的回调函数，有两个参数，第一个参数data返回服务器的数据，第二个参数status返回服务器的状态</p>
+<h4 id="Ajax请求将文本框输入的值发送给服务器"><a href="#Ajax请求将文本框输入的值发送给服务器" class="headerlink" title="Ajax请求将文本框输入的值发送给服务器"></a>Ajax请求将文本框输入的值发送给服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">url:&quot;$&#123;pageContext.request.contextPath&#125;&#x2F;ajax&#x2F;al&quot;&#x2F;&#x2F;发送给服务器</span><br><span class="line">data:&quot;$(&quot;#txtname&quot;).val()&quot; &#x2F;&#x2F;获取文本框的值</span><br><span class="line">success:function(data,status)&#123;</span><br><span class="line">console.log(data);</span><br><span class="line">console.log(status)</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/04/Ajax/" data-id="ck8mzjvfi0001ucubd47k32w1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Springboot" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/28/Springboot/" class="article-date">
@@ -110,6 +219,14 @@
 <p>​            行内写法</p>
 <p>​                            数组名： [元素]</p>
 <h4 id="5-spring-boot注解："><a href="#5-spring-boot注解：" class="headerlink" title="5. spring boot注解："></a>5. spring boot注解：</h4><p> @Service, 用于业务服务层<br>@Controller, 用于展现层<br>@Repository, 用于 D A O 层<br>@Component, 通用组件, 它是上面 3 个注解的父注解, 没有明确的角色, 对于普通的组件最好使用@Component 注解 </p>
+<h4 id="从配置文件中获取值的方式"><a href="#从配置文件中获取值的方式" class="headerlink" title="从配置文件中获取值的方式"></a>从配置文件中获取值的方式</h4><p>1.使用@configurationProperties（prefix = “XXX”）将配置文件中的属性映射到当前类，注意要有前缀，而且当前类一定要加上@component注解，这样这个类才会成为容器的组件，否则第一个注解不会发挥作用。<bean></bean>标签的作用也是把一个类加到容器中。</p>
+<p>如下代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"persion"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">properties</span> <span class="attr">name</span>=<span class="string">"lastname"</span> <span class="attr">value</span>=<span class="string">"???"</span>&gt;</span><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@component</span><br><span class="line">class persion&#123;</span><br><span class="line">	@value(&quot;???&quot;);</span><br><span class="line">	private String lastname;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这两段代码的作用是一样的！                                                                                                                                   2.@value注解（这是一个spring的底层注解）</p>
+<p>@validated注解标注的类说明这个类的属性是需要校验的，@value不注解支持校验，@value注解不支持复杂类型的值的获取</p>
 
       
     </div>
@@ -198,7 +315,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -209,6 +326,14 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/04/05/Get%20vs%20Post/">Get vs Post</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/04/Ajax/">Ajax</a>
+          </li>
         
           <li>
             <a href="/2020/03/28/Springboot/">Springboot</a>
