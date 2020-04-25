@@ -66,6 +66,64 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-c++学习1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/22/c++%E5%AD%A6%E4%B9%A01/" class="article-date">
+  <time datetime="2020-04-22T14:44:39.667Z" itemprop="datePublished">2020-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/22/c++%E5%AD%A6%E4%B9%A01/">c++学习1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="问题一：include头文件的作用"><a href="#问题一：include头文件的作用" class="headerlink" title="问题一：include头文件的作用"></a>问题一：include头文件的作用</h4><p>解释：#include&lt;&gt;形如这样的形式，include的作用就是把尖括号的内容引入到.cpp文件中，这就是预编译的过程，之后用这个合成的文件来进行编译。当我们使用#include&lt;iostream.h&gt;时，就不用using namespace std;了，因为已经包含了。但是使用没有.h的头文件时，就必须加上using namespace std;</p>
+<h4 id="问题二：c-的命名空间—为什么总是要写using-namespace-std"><a href="#问题二：c-的命名空间—为什么总是要写using-namespace-std" class="headerlink" title="问题二：c++的命名空间—为什么总是要写using namespace std; ???"></a>问题二：c++的命名空间—为什么总是要写using namespace std; ???</h4><p>解释：C++标准程序库中的所有标识符（为函数或者变量等起的名字）都被定义在一个名为std的namespace中。由于namespace的概念，使用C++标准程序库的任何标识符时都有三种选择：</p>
+<ol>
+<li><p>直接指定表示符</p>
+<p>例如：std::iostream而不是iostream.</p>
+<p>完整语句为：std::cout&lt;&lt;std::hex&lt;&lt;3.4&lt;&lt;std::endl;//hex表示是以十六进制的形式输出3.4</p>
+</li>
+<li><p>使用using关键字</p>
+<p>加入：using std::cout; using std::endl;  using std::cin;则前面 的语句可以改写成：</p>
+<p>cout&lt;&lt;std::hex&lt;&lt;3.4&lt;&lt;endl;</p>
+</li>
+<li><p>使用 using namespace std;</p>
+<p>这样std命名空间内定义的所有标识符都有效。就好像把他们声明为全局变量一样，那么以上语句又可以改为：cout&lt;&lt;hex&lt;&lt;3.4&lt;&lt;endl; </p>
+<p>当使用<iostream>的时候，该头文件没有定义全局命名空间，必须使用C++所规定的标准的命名空间（即：namespace std 这就告诉编译器我要使用std命名空间中的标识符了），这样才能正确使用cout、endl等功能。 </iostream></p>
+</li>
+</ol>
+<h4 id="问题三：C-的指针数组和指向数组的指针傻傻分不清？？"><a href="#问题三：C-的指针数组和指向数组的指针傻傻分不清？？" class="headerlink" title="问题三：C++的指针数组和指向数组的指针傻傻分不清？？"></a>问题三：C++的指针数组和指向数组的指针傻傻分不清？？</h4><p>​    解释：指针数组，注意中心词：“数组”，这就说明，这是一个数组，但是为啥又有 “指针” 二字呢？  这是因为这个数组里面放的是指针，就是这样！指向数组的指针，中心词是指针，就说明这是一个指针，只不过这个指针是指向数组的。</p>
+<p>指针数组的定义：int*a[4];</p>
+<p>数组指针的定义：int(*a)[4];</p>
+<p>实例代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">4</span>] = &#123;</span><br><span class="line">	&#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>&#125;,</span><br><span class="line">	&#123;<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">9</span>&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> *<span class="built_in">array</span>[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)&#123;</span><br><span class="line">		<span class="built_in">array</span>[i]=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;*<span class="built_in">array</span>[<span class="number">0</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//结果为1</span></span><br><span class="line">	<span class="comment">//解释：array和[]的结合律高于和*的结合律，所以先和[]结合，array[0]存放的是二维数组第一行的地址 </span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;*<span class="built_in">array</span>[<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//结果为2 </span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> (*arr)[<span class="number">4</span>];<span class="comment">//这是指向一个数组的指针，这个数组有四个元素和上面的a[2][4]相对应，正好指向a数组的每一行。</span></span><br><span class="line">	arr = a;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;*(arr[<span class="number">1</span>]+<span class="number">1</span>)&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//结果为0 </span></span><br><span class="line">   	<span class="comment">//arr[1]是a数组第二行的首地址，加一代表在第二行首元素向后移动一位，*就是取出这个地址的值了，很明显这里就是0；</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2020/04/22/c++%E5%AD%A6%E4%B9%A01/" data-id="ck9fq6vfb0000soubf0w13fug" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-student-progect" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/19/student-progect/" class="article-date">
@@ -88,8 +146,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>####　API文档要求</p>
-<p>１.明确请求</p>
+        <h4 id="API文档要求"><a href="#API文档要求" class="headerlink" title="API文档要求"></a>API文档要求</h4><p>１.明确请求</p>
 <p>２．参数传还是不传，必须明确</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;数据库jpa</span><br><span class="line">＜dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.sptingframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-data-jpa&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">&#x2F;&#x2F;MySQL连接</span><br><span class="line">＜dependency&gt;</span><br><span class="line">	&lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mysql-connertor-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">&#x2F;&#x2F;单元测试</span><br><span class="line">＜dependency&gt;</span><br><span class="line">	&lt;groupId&gt;junit&lt;&#x2F;groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;junit&lt;&#x2F;artifactId&gt;</span><br><span class="line">	&lt;scope&gt;test&lt;&#x2F;scope&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">&#x2F;&#x2F;AOP权限验证</span><br><span class="line">＜dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.sptingframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-aop&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">&#x2F;&#x2F;日志工具</span><br><span class="line">＜dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br></pre></td></tr></table></figure>
 
@@ -100,42 +157,6 @@
     </div>
     <footer class="article-footer">
       <a data-url="http://github.com/2020/04/19/student-progect/" data-id="ck99fh1vm0000t8ub99lidbkb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-post-name" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/17/post-name/" class="article-date">
-  <time datetime="2020-04-17T08:10:50.000Z" itemprop="datePublished">2020-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/post-name/">post_name</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://github.com/2020/04/17/post-name/" data-id="ck93x9js900004oub8s4sexh0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,7 +213,7 @@
 
 <p>不设置id只是插入别的东西的时候id会自增</p>
 <h4 id="UNIQUE-KEY唯一约束"><a href="#UNIQUE-KEY唯一约束" class="headerlink" title="UNIQUE KEY唯一约束"></a>UNIQUE KEY唯一约束</h4><p>比如一个学校的学号是唯一的</p>
-<p>####　ＤEFAULT  ‘abc’ 设置默认值</p>
+<p>DEFAULT ‘abc’  用来设置默认值</p>
 <p><strong>例如</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username VARCHAR(20) NOT NULL DEFAULT 'abc'</span><br></pre></td></tr></table></figure>
 
@@ -241,8 +262,7 @@
 <li>3.Thymeleaf 提供 Spring 标准方言和一个与 SpringMVC 完美集成的可选模块，可以快速的实现表单绑定、属性编辑器、国际化等功能。</li>
 </ul>
 <h4 id="JSP介绍"><a href="#JSP介绍" class="headerlink" title="JSP介绍"></a>JSP介绍</h4><p> <strong>JSP</strong>（全称<strong>J</strong>ava<strong>S</strong>erver <strong>P</strong>ages）是由[Sun Microsystems](<a href="https://baike.baidu.com/item/Sun" target="_blank" rel="noopener">https://baike.baidu.com/item/Sun</a> Microsystems)公司主导创建的一种动态网页技术标准。JSP部署于网络服务器上，可以响应客户端发送的请求，并根据请求内容动态地生成<a href="https://baike.baidu.com/item/HTML" target="_blank" rel="noopener">HTML</a>、<a href="https://baike.baidu.com/item/XML" target="_blank" rel="noopener">XML</a>或其他格式文档的<a href="https://baike.baidu.com/item/Web" target="_blank" rel="noopener">Web</a>网页，然后返回给请求者。JSP技术以<a href="https://baike.baidu.com/item/Java" target="_blank" rel="noopener">Java</a>语言作为<a href="https://baike.baidu.com/item/脚本语言" target="_blank" rel="noopener">脚本语言</a>，为用户的<a href="https://baike.baidu.com/item/HTTP" target="_blank" rel="noopener">HTTP</a>请求提供服务，并能与服务器上的其它Java程序共同处理复杂的业务需求。 </p>
-<h4 id="templates文件夹"><a href="#templates文件夹" class="headerlink" title="templates文件夹"></a>templates文件夹</h4><p><img src="post-name/springboot.png" alt="sprinfboot"></p>
-<p>这个templates文件夹的作用是放一些模板的</p>
+<h4 id="templates文件夹"><a href="#templates文件夹" class="headerlink" title="templates文件夹"></a>templates文件夹</h4><p>这个templates文件夹的作用是放一些模板的</p>
 <h4 id="server-servlet-context-path-zhaohe"><a href="#server-servlet-context-path-zhaohe" class="headerlink" title="server.servlet.context-path=/zhaohe"></a>server.servlet.context-path=/zhaohe</h4><p>这个是配置根目录的，如果这样配置，那么访问的时候就网址就是：</p>
 <p> <a href="http://localhost:8080/zhaohe/hello" target="_blank" rel="noopener">http://localhost:8080/zhaohe/hello</a> </p>
 <h4 id="传参数的两种方法"><a href="#传参数的两种方法" class="headerlink" title="传参数的两种方法"></a>传参数的两种方法</h4><ol>
@@ -531,11 +551,11 @@ if(httprequest.readyState === 4){
       <ul>
         
           <li>
-            <a href="/2020/04/19/student-progect/">student-progect</a>
+            <a href="/2020/04/22/c++%E5%AD%A6%E4%B9%A01/">c++学习1</a>
           </li>
         
           <li>
-            <a href="/2020/04/17/post-name/">post_name</a>
+            <a href="/2020/04/19/student-progect/">student-progect</a>
           </li>
         
           <li>

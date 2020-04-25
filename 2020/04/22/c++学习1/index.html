@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>c++学习1 | Blog-zhaohe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题一：include头文件的作用解释：#include&lt;&gt;形如这样的形式，include的作用就是把尖括号的内容引入到.cpp文件中，这就是预编译的过程，之后用这个合成的文件来进行编译。当我们使用#include&lt;iostream.h&gt;时，就不用using namespace std;了，因为已经包含了。但是使用没有.h的头文件时，就必须加上using namespace">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++学习1">
+<meta property="og:url" content="http://github.com/2020/04/22/c++%E5%AD%A6%E4%B9%A01/index.html">
+<meta property="og:site_name" content="Blog-zhaohe">
+<meta property="og:description" content="问题一：include头文件的作用解释：#include&lt;&gt;形如这样的形式，include的作用就是把尖括号的内容引入到.cpp文件中，这就是预编译的过程，之后用这个合成的文件来进行编译。当我们使用#include&lt;iostream.h&gt;时，就不用using namespace std;了，因为已经包含了。但是使用没有.h的头文件时，就必须加上using namespace">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-22T14:44:39.667Z">
+<meta property="article:modified_time" content="2020-04-23T04:25:18.526Z">
+<meta property="article:author" content="Zhao He">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog-zhaohe" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Blog-zhaohe</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://github.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-c++学习1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/22/c++%E5%AD%A6%E4%B9%A01/" class="article-date">
+  <time datetime="2020-04-22T14:44:39.667Z" itemprop="datePublished">2020-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      c++学习1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="问题一：include头文件的作用"><a href="#问题一：include头文件的作用" class="headerlink" title="问题一：include头文件的作用"></a>问题一：include头文件的作用</h4><p>解释：#include&lt;&gt;形如这样的形式，include的作用就是把尖括号的内容引入到.cpp文件中，这就是预编译的过程，之后用这个合成的文件来进行编译。当我们使用#include&lt;iostream.h&gt;时，就不用using namespace std;了，因为已经包含了。但是使用没有.h的头文件时，就必须加上using namespace std;</p>
+<h4 id="问题二：c-的命名空间—为什么总是要写using-namespace-std"><a href="#问题二：c-的命名空间—为什么总是要写using-namespace-std" class="headerlink" title="问题二：c++的命名空间—为什么总是要写using namespace std; ???"></a>问题二：c++的命名空间—为什么总是要写using namespace std; ???</h4><p>解释：C++标准程序库中的所有标识符（为函数或者变量等起的名字）都被定义在一个名为std的namespace中。由于namespace的概念，使用C++标准程序库的任何标识符时都有三种选择：</p>
+<ol>
+<li><p>直接指定表示符</p>
+<p>例如：std::iostream而不是iostream.</p>
+<p>完整语句为：std::cout&lt;&lt;std::hex&lt;&lt;3.4&lt;&lt;std::endl;//hex表示是以十六进制的形式输出3.4</p>
+</li>
+<li><p>使用using关键字</p>
+<p>加入：using std::cout; using std::endl;  using std::cin;则前面 的语句可以改写成：</p>
+<p>cout&lt;&lt;std::hex&lt;&lt;3.4&lt;&lt;endl;</p>
+</li>
+<li><p>使用 using namespace std;</p>
+<p>这样std命名空间内定义的所有标识符都有效。就好像把他们声明为全局变量一样，那么以上语句又可以改为：cout&lt;&lt;hex&lt;&lt;3.4&lt;&lt;endl; </p>
+<p>当使用<iostream>的时候，该头文件没有定义全局命名空间，必须使用C++所规定的标准的命名空间（即：namespace std 这就告诉编译器我要使用std命名空间中的标识符了），这样才能正确使用cout、endl等功能。 </iostream></p>
+</li>
+</ol>
+<h4 id="问题三：C-的指针数组和指向数组的指针傻傻分不清？？"><a href="#问题三：C-的指针数组和指向数组的指针傻傻分不清？？" class="headerlink" title="问题三：C++的指针数组和指向数组的指针傻傻分不清？？"></a>问题三：C++的指针数组和指向数组的指针傻傻分不清？？</h4><p>​    解释：指针数组，注意中心词：“数组”，这就说明，这是一个数组，但是为啥又有 “指针” 二字呢？  这是因为这个数组里面放的是指针，就是这样！指向数组的指针，中心词是指针，就说明这是一个指针，只不过这个指针是指向数组的。</p>
+<p>指针数组的定义：int*a[4];</p>
+<p>数组指针的定义：int(*a)[4];</p>
+<p>实例代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">4</span>] = &#123;</span><br><span class="line">	&#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>&#125;,</span><br><span class="line">	&#123;<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">9</span>&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> *<span class="built_in">array</span>[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)&#123;</span><br><span class="line">		<span class="built_in">array</span>[i]=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;*<span class="built_in">array</span>[<span class="number">0</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//结果为1</span></span><br><span class="line">	<span class="comment">//解释：array和[]的结合律高于和*的结合律，所以先和[]结合，array[0]存放的是二维数组第一行的地址 </span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;*<span class="built_in">array</span>[<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//结果为2 </span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> (*arr)[<span class="number">4</span>];<span class="comment">//这是指向一个数组的指针，这个数组有四个元素和上面的a[2][4]相对应，正好指向a数组的每一行。</span></span><br><span class="line">	arr = a;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;*(arr[<span class="number">1</span>]+<span class="number">1</span>)&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//结果为0 </span></span><br><span class="line">   	<span class="comment">//arr[1]是a数组第二行的首地址，加一代表在第二行首元素向后移动一位，*就是取出这个地址的值了，很明显这里就是0；</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2020/04/22/c++%E5%AD%A6%E4%B9%A01/" data-id="ck9fq6vfb0000soubf0w13fug" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/19/student-progect/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">student-progect</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/My-first-blog/" rel="tag">My first blog</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/My-first-blog/" style="font-size: 10px;">My first blog</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/22/c++%E5%AD%A6%E4%B9%A01/">c++学习1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/19/student-progect/">student-progect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/09/sql%E8%AF%AD%E5%8F%A5/">sql语句</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/06/Springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Springboot学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/05/Get%20vs%20Post/">Get vs Post</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Zhao He<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
