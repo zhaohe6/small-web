@@ -5,17 +5,17 @@
   
 
   
-  <title>Ajax | Blog-zhaohe</title>
+  <title>C++学习之进制输出 | Blog-zhaohe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="js基础知识补充（1）iframe标签用于加载网页在特定的位置 （2）input 标签的value属性是用来设置文本框的内容 （3）input标签的name属性： 只有设置了 name 属性的表单元素才能在提交表单时传递它们的值，因为服务端获取表单提交的数据是通过表单元素的 name 属性的值而得到的，没有 name 属性就无法得到表单元素提交给服务端的值 （4）input的onblur属性： ​">
+  <meta name="description" content="利用操纵符格式化数据常用操纵符有：    解释 操纵符    十六进制显示0X，科学计数法显示E uppercase   插入空白字符，然后刷新ostream缓冲区 ends   插入换行符，然后刷新ostream缓冲区 endl   十进制&#x2F;八进制&#x2F;十六进制 dec&#x2F;oct&#x2F;hex   数据输出的对齐方式左对齐右对齐 left&#x2F;right   显示数值的基数前缀 showbase   12345">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ajax">
-<meta property="og:url" content="http://github.com/2020/04/04/Ajax/index.html">
+<meta property="og:title" content="C++学习之进制输出">
+<meta property="og:url" content="http://github.com/2020/04/26/C++%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA/index.html">
 <meta property="og:site_name" content="Blog-zhaohe">
-<meta property="og:description" content="js基础知识补充（1）iframe标签用于加载网页在特定的位置 （2）input 标签的value属性是用来设置文本框的内容 （3）input标签的name属性： 只有设置了 name 属性的表单元素才能在提交表单时传递它们的值，因为服务端获取表单提交的数据是通过表单元素的 name 属性的值而得到的，没有 name 属性就无法得到表单元素提交给服务端的值 （4）input的onblur属性： ​">
+<meta property="og:description" content="利用操纵符格式化数据常用操纵符有：    解释 操纵符    十六进制显示0X，科学计数法显示E uppercase   插入空白字符，然后刷新ostream缓冲区 ends   插入换行符，然后刷新ostream缓冲区 endl   十进制&#x2F;八进制&#x2F;十六进制 dec&#x2F;oct&#x2F;hex   数据输出的对齐方式左对齐右对齐 left&#x2F;right   显示数值的基数前缀 showbase   12345">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-04T01:04:04.132Z">
-<meta property="article:modified_time" content="2020-04-05T12:03:37.919Z">
+<meta property="article:published_time" content="2020-04-26T12:25:46.907Z">
+<meta property="article:modified_time" content="2020-04-26T12:44:57.370Z">
 <meta property="article:author" content="Zhao He">
 <meta name="twitter:card" content="summary">
   
@@ -66,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Ajax" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-C++学习之进制输出" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/04/04/Ajax/" class="article-date">
-  <time datetime="2020-04-04T01:04:04.132Z" itemprop="datePublished">2020-04-04</time>
+    <a href="/2020/04/26/C++%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA/" class="article-date">
+  <time datetime="2020-04-26T12:25:46.907Z" itemprop="datePublished">2020-04-26</time>
 </a>
     
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Ajax
+      C++学习之进制输出
     </h1>
   
 
@@ -88,21 +88,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="js基础知识补充"><a href="#js基础知识补充" class="headerlink" title="js基础知识补充"></a>js基础知识补充</h4><p>（1）iframe标签用于加载网页在特定的位置</p>
-<p>（2）input 标签的value属性是用来设置文本框的内容</p>
-<p>（3）input标签的name属性：</p>
-<pre><code>只有设置了 name 属性的表单元素才能在提交表单时传递它们的值，因为服务端获取表单提交的数据是通过表单元素的 name 属性的值而得到的，没有 name 属性就无法得到表单元素提交给服务端的值 </code></pre><p>（4）input的onblur属性：</p>
-<p>​            失去焦点事件，与onfocus相反</p>
-<h4 id="Ajax的常用的参数"><a href="#Ajax的常用的参数" class="headerlink" title="Ajax的常用的参数"></a>Ajax的常用的参数</h4><p>url：待载入页面的URL地址</p>
-<p>data：待发送的key/value参数</p>
-<p>success：载入成功时的回调函数，有两个参数，第一个参数data返回服务器的数据，第二个参数status返回服务器的状态</p>
-<h4 id="Ajax请求将文本框输入的值发送给服务器"><a href="#Ajax请求将文本框输入的值发送给服务器" class="headerlink" title="Ajax请求将文本框输入的值发送给服务器"></a>Ajax请求将文本框输入的值发送给服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">url:&quot;$&#123;pageContext.request.contextPath&#125;&#x2F;ajax&#x2F;al&quot;&#x2F;&#x2F;发送给服务器</span><br><span class="line">data:&quot;$(&quot;#txtname&quot;).val()&quot; &#x2F;&#x2F;获取文本框的值</span><br><span class="line">success:function(data,status)&#123;</span><br><span class="line">console.log(data);</span><br><span class="line">console.log(status)</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+        <h4 id="利用操纵符格式化数据"><a href="#利用操纵符格式化数据" class="headerlink" title="利用操纵符格式化数据"></a>利用操纵符格式化数据</h4><p>常用操纵符有：</p>
+<table>
+<thead>
+<tr>
+<th>解释</th>
+<th>操纵符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>十六进制显示0X，科学计数法显示E</td>
+<td>uppercase</td>
+</tr>
+<tr>
+<td>插入空白字符，然后刷新ostream缓冲区</td>
+<td>ends</td>
+</tr>
+<tr>
+<td>插入换行符，然后刷新ostream缓冲区</td>
+<td>endl</td>
+</tr>
+<tr>
+<td>十进制/八进制/十六进制</td>
+<td>dec/oct/hex</td>
+</tr>
+<tr>
+<td>数据输出的对齐方式左对齐右对齐</td>
+<td>left/right</td>
+</tr>
+<tr>
+<td>显示数值的基数前缀</td>
+<td>showbase</td>
+</tr>
+</tbody></table>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;oct&lt;&lt;<span class="number">1234</span>&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//输出 2322</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;hex&lt;&lt;<span class="number">1234</span>&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//输出 4d2</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;showbase&lt;&lt;hex&lt;&lt;<span class="number">1234</span>&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//输出 0x4d2</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;uppercase&lt;&lt;hex&lt;&lt;<span class="number">1234</span>&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//输出 0X4D2</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.com/2020/04/04/Ajax/" data-id="ck8mzjvfi0001ucubd47k32w1" class="article-share-link">Share</a>
+      <a data-url="http://github.com/2020/04/26/C++%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA/" data-id="ck9h1syiu0000kkubhl948uzj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -111,19 +136,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/04/05/Get%20vs%20Post/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Get vs Post
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/03/28/Springboot/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/22/c++%E5%AD%A6%E4%B9%A01/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Springboot</div>
+      <div class="article-nav-title">c++学习1</div>
     </a>
   
 </nav>
