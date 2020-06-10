@@ -1,225 +1,292 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+
 <head>
-  <meta charset="utf-8">
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js进阶 - Blog-zhaohe</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
 
   
-  <title>js进阶 | Blog-zhaohe</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="变量对象在局部作用域中，当函数执行完毕，局不变量就没有存在的必要了，因此垃圾回收器很容易做出判断并回收，但是全局变量什么时候释放没存很难却定，因此在开发中尽量避免使用全局变量。 执行上下文执行上下文可以理解为当前代码的执行环境，他会形成一个作用域，在执行代码的过程中会创建执行上下文。 函数调用栈在js中调用函数的行为使引擎寻求帮助，这个帮助来自引擎的朋友——函数调用栈。当一个函数被调用时，这个函数">
-<meta property="og:type" content="article">
-<meta property="og:title" content="js进阶">
-<meta property="og:url" content="http://github.com/2020/03/26/JavaScript%E8%BF%9B%E9%98%B6/index.html">
-<meta property="og:site_name" content="Blog-zhaohe">
-<meta property="og:description" content="变量对象在局部作用域中，当函数执行完毕，局不变量就没有存在的必要了，因此垃圾回收器很容易做出判断并回收，但是全局变量什么时候释放没存很难却定，因此在开发中尽量避免使用全局变量。 执行上下文执行上下文可以理解为当前代码的执行环境，他会形成一个作用域，在执行代码的过程中会创建执行上下文。 函数调用栈在js中调用函数的行为使引擎寻求帮助，这个帮助来自引擎的朋友——函数调用栈。当一个函数被调用时，这个函数">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-26T12:44:01.000Z">
-<meta property="article:modified_time" content="2020-04-03T07:59:58.092Z">
-<meta property="article:author" content="Zhao He">
-<meta property="article:tag" content="My first blog">
-<meta name="twitter:card" content="summary">
+  <meta name="keywords" content="zhaoo, hexo-theme-zhaoo,"> 
   
-    <link rel="alternate" href="/atom.xml" title="Blog-zhaohe" type="application/atom+xml">
+  <meta name="description" content="this blog is about how to study SQL and Java,变量对象在局部作用域中，当函数执行完毕，局不变量就没有..."> 
+  
+  <meta name="author" content="Zhao He"> 
+
+  
+    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
   
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
   
 <link rel="stylesheet" href="/css/style.css">
 
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {}
+    CONFIG = {
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate_alipay: 'https://pic.izhaoo.com/alipay.jpg',
+      donate_wechat: 'https://pic.izhaoo.com/wechat.jpg',
+      motto: {
+        api: '',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: 'true'
+      },
+      fab: {
+        enable: 'true',
+        alwaysShow: 'false'
+      }
+    }
+  </script>
+
+  
+
+  
 <meta name="generator" content="Hexo 4.2.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Blog-zhaohe</a>
-      </h1>
+<body class="lock-screen">
+  <div class="loading"></div>
+  <nav class="menu">
+  <div class="menu-close">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <ul class="menu-content">
+    
+    
+    
+    
+    <li class="menu-item"><a href="/ "> 首页</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/galleries "> 摄影</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/archives "> 归档</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/tags "> 标签</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/categories "> 分类</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/about "> 关于</a></li>
+    
+  </ul>
+  <div class="menu-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://www.izhaoo.com">zhaoo</a> .AllRightsReserved</p></div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">js进阶</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-03-26</span
+        class="post-info-item">
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://github.com"></form>
-      </div>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>277</span>
     </div>
   </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-JavaScript进阶" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/26/JavaScript%E8%BF%9B%E9%98%B6/" class="article-date">
-  <time datetime="2020-03-26T12:44:01.000Z" itemprop="datePublished">2020-03-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      js进阶
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h4><p>在局部作用域中，当函数执行完毕，局不变量就没有存在的必要了，因此垃圾回收器很容易做出判断并回收，但是全局变量什么时候释放没存很难却定，因此在开发中尽量避免使用全局变量。</p>
+</section>
+  <section class="main">
+    <section class="content">
+      <h4 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h4><p>在局部作用域中，当函数执行完毕，局不变量就没有存在的必要了，因此垃圾回收器很容易做出判断并回收，但是全局变量什么时候释放没存很难却定，因此在开发中尽量避免使用全局变量。</p>
 <h4 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h4><p>执行上下文可以理解为当前代码的执行环境，他会形成一个作用域，在执行代码的过程中会创建执行上下文。</p>
 <h4 id="函数调用栈"><a href="#函数调用栈" class="headerlink" title="函数调用栈"></a>函数调用栈</h4><p>在js中调用函数的行为使引擎寻求帮助，这个帮助来自引擎的朋友——函数调用栈。当一个函数被调用时，这个函数会出现在函数调用栈中，这个函数的执行上下文（局部执行上下文），也会在全局执行上下文中出现</p>
 <hr>
-<h4 id="函数调用栈、执行上下文、和全局作用域是JS引擎的三个重要部分。"><a href="#函数调用栈、执行上下文、和全局作用域是JS引擎的三个重要部分。" class="headerlink" title="函数调用栈、执行上下文、和全局作用域是JS引擎的三个重要部分。"></a>函数调用栈、执行上下文、和全局作用域是JS引擎的三个重要部分。</h4><h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+<h4 id="函数调用栈、执行上下文、和全局作用域是JS引擎的三个重要部分。"><a href="#函数调用栈、执行上下文、和全局作用域是JS引擎的三个重要部分。" class="headerlink" title="函数调用栈、执行上下文、和全局作用域是JS引擎的三个重要部分。"></a>函数调用栈、执行上下文、和全局作用域是JS引擎的三个重要部分。</h4>
+    </section>
+    <section class="extra">
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://github.com/2020/03/26/JavaScript%E8%BF%9B%E9%98%B6/" data-id="ck8jw8hoy0001agub8y1075n8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/My-first-blog/" rel="tag">My first blog</a></li></ul>
-
-    </footer>
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020/03/28/Springboot/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Springboot
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
-</article>
-
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
 </section>
-        
-          <aside id="sidebar">
-  
-    
+      
+      
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/My-first-blog/" rel="tag">My first blog</a></li></ul>
 
+      
+<nav class="nav">
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/My-first-blog/" rel="tag">My first blog</a></li></ul>
-    </div>
-  </div>
-
-
+    <a href="/2020/03/28/Springboot/"><i class="iconfont iconleft"></i>Springboot</a>
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/My-first-blog/" style="font-size: 10px;">My first blog</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/05/20/c++%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8/">c++指针和引用</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/20/nginx%E5%AD%A6%E4%B9%A0/">nginx学习</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/26/C++%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA/">C++学习之进制输出</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/22/c++%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">c++基础学习</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/09/sql%E8%AF%AD%E5%8F%A5/">sql语句</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 Zhao He<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
+
+    </section>
     
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
+      <section class="comments">
+        
+          <div class="btn" id="comments-btn">查看评论</div>
+        
+        
+      </section>
+    
+  </section>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/izhaoo " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:izhaoo@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://www.izhaoo.com">zhaoo</a> .AllRightsReserved</p></div>
+</footer>
   
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  <div class="fab fab-menu">
+    <i class="iconfont iconmenu"></i>
+  </div>
   
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
+
+
 
 
 
@@ -228,7 +295,28 @@
 
 
 
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
 
-  </div>
-</body>
+
+
+
+
+
+
+
+
+
+
 </html>

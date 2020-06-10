@@ -1,94 +1,160 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+
 <head>
-  <meta charset="utf-8">
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>c++基础学习 - Blog-zhaohe</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
 
   
-  <title>c++基础学习 | Blog-zhaohe</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题一：include头文件的作用解释：#include&lt;&gt;形如这样的形式，include的作用就是把尖括号的内容引入到.cpp文件中，这就是预编译的过程，之后用这个合成的文件来进行编译。当我们使用#include&lt;iostream.h&gt;时，就不用using namespace std;了，因为已经包含了。但是使用没有.h的头文件时，就必须加上using namespace">
-<meta property="og:type" content="article">
-<meta property="og:title" content="c++基础学习">
-<meta property="og:url" content="http://github.com/2020/04/22/c++%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/index.html">
-<meta property="og:site_name" content="Blog-zhaohe">
-<meta property="og:description" content="问题一：include头文件的作用解释：#include&lt;&gt;形如这样的形式，include的作用就是把尖括号的内容引入到.cpp文件中，这就是预编译的过程，之后用这个合成的文件来进行编译。当我们使用#include&lt;iostream.h&gt;时，就不用using namespace std;了，因为已经包含了。但是使用没有.h的头文件时，就必须加上using namespace">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-22T14:44:39.667Z">
-<meta property="article:modified_time" content="2020-04-23T04:25:18.526Z">
-<meta property="article:author" content="Zhao He">
-<meta name="twitter:card" content="summary">
+  <meta name="keywords" content="zhaoo, hexo-theme-zhaoo,"> 
   
-    <link rel="alternate" href="/atom.xml" title="Blog-zhaohe" type="application/atom+xml">
+  <meta name="description" content="this blog is about how to study SQL and Java,问题一：include头文件的作用解释：#includ..."> 
+  
+  <meta name="author" content="Zhao He"> 
+
+  
+    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
   
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
   
 <link rel="stylesheet" href="/css/style.css">
 
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {}
+    CONFIG = {
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate_alipay: 'https://pic.izhaoo.com/alipay.jpg',
+      donate_wechat: 'https://pic.izhaoo.com/wechat.jpg',
+      motto: {
+        api: '',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: 'true'
+      },
+      fab: {
+        enable: 'true',
+        alwaysShow: 'false'
+      }
+    }
+  </script>
+
+  
+
+  
 <meta name="generator" content="Hexo 4.2.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Blog-zhaohe</a>
-      </h1>
+<body class="lock-screen">
+  <div class="loading"></div>
+  <nav class="menu">
+  <div class="menu-close">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <ul class="menu-content">
+    
+    
+    
+    
+    <li class="menu-item"><a href="/ "> 首页</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/galleries "> 摄影</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/archives "> 归档</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/tags "> 标签</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/categories "> 分类</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/about "> 关于</a></li>
+    
+  </ul>
+  <div class="menu-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://www.izhaoo.com">zhaoo</a> .AllRightsReserved</p></div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">c++基础学习</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-04-22</span
+        class="post-info-item">
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://github.com"></form>
-      </div>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1584</span>
     </div>
   </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-c++基础学习" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/22/c++%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" class="article-date">
-  <time datetime="2020-04-22T14:44:39.667Z" itemprop="datePublished">2020-04-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      c++基础学习
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="问题一：include头文件的作用"><a href="#问题一：include头文件的作用" class="headerlink" title="问题一：include头文件的作用"></a>问题一：include头文件的作用</h4><p>解释：#include&lt;&gt;形如这样的形式，include的作用就是把尖括号的内容引入到.cpp文件中，这就是预编译的过程，之后用这个合成的文件来进行编译。当我们使用#include&lt;iostream.h&gt;时，就不用using namespace std;了，因为已经包含了。但是使用没有.h的头文件时，就必须加上using namespace std;</p>
+</section>
+  <section class="main">
+    <section class="content">
+      <h4 id="问题一：include头文件的作用"><a href="#问题一：include头文件的作用" class="headerlink" title="问题一：include头文件的作用"></a>问题一：include头文件的作用</h4><p>解释：#include&lt;&gt;形如这样的形式，include的作用就是把尖括号的内容引入到.cpp文件中，这就是预编译的过程，之后用这个合成的文件来进行编译。当我们使用#include&lt;iostream.h&gt;时，就不用using namespace std;了，因为已经包含了。但是使用没有.h的头文件时，就必须加上using namespace std;</p>
 <h4 id="问题二：c-的命名空间—为什么总是要写using-namespace-std"><a href="#问题二：c-的命名空间—为什么总是要写using-namespace-std" class="headerlink" title="问题二：c++的命名空间—为什么总是要写using namespace std; ???"></a>问题二：c++的命名空间—为什么总是要写using namespace std; ???</h4><p>解释：C++标准程序库中的所有标识符（为函数或者变量等起的名字）都被定义在一个名为std的namespace中。由于namespace的概念，使用C++标准程序库的任何标识符时都有三种选择：</p>
 <ol>
 <li><p>直接指定表示符</p>
@@ -108,138 +174,137 @@
 <p>指针数组的定义：int*a[4];</p>
 <p>数组指针的定义：int(*a)[4];</p>
 <p>实例代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">4</span>] = &#123;</span><br><span class="line">	&#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>&#125;,</span><br><span class="line">	&#123;<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">9</span>&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> *<span class="built_in">array</span>[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)&#123;</span><br><span class="line">		<span class="built_in">array</span>[i]=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;*<span class="built_in">array</span>[<span class="number">0</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//结果为1</span></span><br><span class="line">	<span class="comment">//解释：array和[]的结合律高于和*的结合律，所以先和[]结合，array[0]存放的是二维数组第一行的地址 </span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;*<span class="built_in">array</span>[<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//结果为2 </span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> (*arr)[<span class="number">4</span>];<span class="comment">//这是指向一个数组的指针，这个数组有四个元素和上面的a[2][4]相对应，正好指向a数组的每一行。</span></span><br><span class="line">	arr = a;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;*(arr[<span class="number">1</span>]+<span class="number">1</span>)&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//结果为0 </span></span><br><span class="line">   	<span class="comment">//arr[1]是a数组第二行的首地址，加一代表在第二行首元素向后移动一位，*就是取出这个地址的值了，很明显这里就是0；</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">int</span> a[<span class="hljs-number">2</span>][<span class="hljs-number">4</span>] = &#123;<br>	&#123;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>&#125;,<br>	&#123;<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>&#125;<br>	&#125;;<br>	<br>	<span class="hljs-keyword">int</span> *<span class="hljs-built_in">array</span>[<span class="hljs-number">2</span>];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">2</span>;i++)&#123;<br>		<span class="hljs-built_in">array</span>[i]=a[i];<br>	&#125;<br>	<span class="hljs-built_in">cout</span>&lt;&lt;*<span class="hljs-built_in">array</span>[<span class="hljs-number">0</span>]&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//结果为1</span><br>	<span class="hljs-comment">//解释：array和[]的结合律高于和*的结合律，所以先和[]结合，array[0]存放的是二维数组第一行的地址 </span><br>	<span class="hljs-built_in">cout</span>&lt;&lt;*<span class="hljs-built_in">array</span>[<span class="hljs-number">1</span>]&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//结果为2 </span><br>	<br>	<br>	<span class="hljs-keyword">int</span> (*arr)[<span class="hljs-number">4</span>];<span class="hljs-comment">//这是指向一个数组的指针，这个数组有四个元素和上面的a[2][4]相对应，正好指向a数组的每一行。</span><br>	arr = a;<br>	<span class="hljs-built_in">cout</span>&lt;&lt;*(arr[<span class="hljs-number">1</span>]+<span class="hljs-number">1</span>)&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//结果为0 </span><br>   	<span class="hljs-comment">//arr[1]是a数组第二行的首地址，加一代表在第二行首元素向后移动一位，*就是取出这个地址的值了，很明显这里就是0；</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
+    </section>
+    <section class="extra">
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://github.com/2020/04/22/c++%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" data-id="ckafeqcei0000gwub0h4u1con" class="article-share-link">Share</a>
-      
-      
-    </footer>
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020/04/26/C++%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          C++学习之进制输出
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/04/09/sql%E8%AF%AD%E5%8F%A5/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">sql语句</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
 </section>
-        
-          <aside id="sidebar">
+      
+      
+      
+<nav class="nav">
   
-    
-
+    <a href="/2020/04/26/C++%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA/"><i class="iconfont iconleft"></i>C++学习之进制输出</a>
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/My-first-blog/" rel="tag">My first blog</a></li></ul>
-    </div>
-  </div>
-
-
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/My-first-blog/" style="font-size: 10px;">My first blog</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/05/20/c++%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8/">c++指针和引用</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/20/nginx%E5%AD%A6%E4%B9%A0/">nginx学习</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/26/C++%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA/">C++学习之进制输出</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/22/c++%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">c++基础学习</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/09/sql%E8%AF%AD%E5%8F%A5/">sql语句</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 Zhao He<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/2020/04/09/sql%E8%AF%AD%E5%8F%A5/">sql语句<i class="iconfont iconright"></i></a>
   
 </nav>
+
+    </section>
     
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
+      <section class="comments">
+        
+          <div class="btn" id="comments-btn">查看评论</div>
+        
+        
+      </section>
+    
+  </section>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/izhaoo " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:izhaoo@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://www.izhaoo.com">zhaoo</a> .AllRightsReserved</p></div>
+</footer>
   
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  <div class="fab fab-menu">
+    <i class="iconfont iconmenu"></i>
+  </div>
   
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
+
+
 
 
 
@@ -248,7 +313,28 @@
 
 
 
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
 
-  </div>
-</body>
+
+
+
+
+
+
+
+
+
+
 </html>
