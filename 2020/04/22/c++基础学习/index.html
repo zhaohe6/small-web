@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>c++ - Blog-zhaohe</title>
+  <title>c++的头文件在说明什么 - Blog-zhaohe</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
@@ -143,12 +143,12 @@
   <section class="head">
   <img   class="lazyload" data-original="/images/theme/post-image3.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">c++</h1>
+    <h1 class="head-title">c++的头文件在说明什么</h1>
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-04-22</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1584</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>814</span>
     </div>
   </div>
 </section>
@@ -170,12 +170,6 @@
 <p>当使用<iostream>的时候，该头文件没有定义全局命名空间，必须使用C++所规定的标准的命名空间（即：namespace std 这就告诉编译器我要使用std命名空间中的标识符了），这样才能正确使用cout、endl等功能。 </iostream></p>
 </li>
 </ol>
-<h4 id="问题三：C-的指针数组和指向数组的指针傻傻分不清？？"><a href="#问题三：C-的指针数组和指向数组的指针傻傻分不清？？" class="headerlink" title="问题三：C++的指针数组和指向数组的指针傻傻分不清？？"></a>问题三：C++的指针数组和指向数组的指针傻傻分不清？？</h4><p>​    解释：指针数组，注意中心词：“数组”，这就说明，这是一个数组，但是为啥又有 “指针” 二字呢？  这是因为这个数组里面放的是指针，就是这样！指向数组的指针，中心词是指针，就说明这是一个指针，只不过这个指针是指向数组的。</p>
-<p>指针数组的定义：int*a[4];</p>
-<p>数组指针的定义：int(*a)[4];</p>
-<p>实例代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">int</span> a[<span class="hljs-number">2</span>][<span class="hljs-number">4</span>] = &#123;<br>	&#123;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>&#125;,<br>	&#123;<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>&#125;<br>	&#125;;<br>	<br>	<span class="hljs-keyword">int</span> *<span class="hljs-built_in">array</span>[<span class="hljs-number">2</span>];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">2</span>;i++)&#123;<br>		<span class="hljs-built_in">array</span>[i]=a[i];<br>	&#125;<br>	<span class="hljs-built_in">cout</span>&lt;&lt;*<span class="hljs-built_in">array</span>[<span class="hljs-number">0</span>]&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//结果为1</span><br>	<span class="hljs-comment">//解释：array和[]的结合律高于和*的结合律，所以先和[]结合，array[0]存放的是二维数组第一行的地址 </span><br>	<span class="hljs-built_in">cout</span>&lt;&lt;*<span class="hljs-built_in">array</span>[<span class="hljs-number">1</span>]&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//结果为2 </span><br>	<br>	<br>	<span class="hljs-keyword">int</span> (*arr)[<span class="hljs-number">4</span>];<span class="hljs-comment">//这是指向一个数组的指针，这个数组有四个元素和上面的a[2][4]相对应，正好指向a数组的每一行。</span><br>	arr = a;<br>	<span class="hljs-built_in">cout</span>&lt;&lt;*(arr[<span class="hljs-number">1</span>]+<span class="hljs-number">1</span>)&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//结果为0 </span><br>   	<span class="hljs-comment">//arr[1]是a数组第二行的首地址，加一代表在第二行首元素向后移动一位，*就是取出这个地址的值了，很明显这里就是0；</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 
     </section>
     <section class="extra">
@@ -194,10 +188,10 @@
       
 <nav class="nav">
   
-    <a href="/2020/04/26/C++%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA/"><i class="iconfont iconleft"></i>sql</a>
+    <a href="/2020/04/26/C++%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA/"><i class="iconfont iconleft"></i>c++中的进制</a>
   
   
-    <a href="/2020/04/09/sql%E8%AF%AD%E5%8F%A5/">sql<i class="iconfont iconright"></i></a>
+    <a href="/2020/04/09/sql%E8%AF%AD%E5%8F%A5/">Mysql常用语法<i class="iconfont iconright"></i></a>
   
 </nav>
 
