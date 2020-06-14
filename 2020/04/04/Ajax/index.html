@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Ajax - Blog-zhaohe</title>
+  <title>Ajax初步学习 - Blog-zhaohe</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
@@ -143,12 +143,12 @@
   <section class="head">
   <img   class="lazyload" data-original="/images/theme/post-image2.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">Ajax</h1>
+    <h1 class="head-title">Ajax初步学习</h1>
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-04-04</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>630</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1697</span>
     </div>
   </div>
 </section>
@@ -163,6 +163,12 @@
 <p>data：待发送的key/value参数</p>
 <p>success：载入成功时的回调函数，有两个参数，第一个参数data返回服务器的数据，第二个参数status返回服务器的状态</p>
 <h4 id="Ajax请求将文本框输入的值发送给服务器"><a href="#Ajax请求将文本框输入的值发送给服务器" class="headerlink" title="Ajax请求将文本框输入的值发送给服务器"></a>Ajax请求将文本框输入的值发送给服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ajax">$.ajax(&#123;<br>url:&quot;$&#123;pageContext.request.contextPath&#125;&#x2F;ajax&#x2F;al&quot;&#x2F;&#x2F;发送给服务器<br>data:&quot;$(&quot;#txtname&quot;).val()&quot; &#x2F;&#x2F;获取文本框的值<br>success:function(data,status)&#123;<br>console.log(data);<br>console.log(status)<br>&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="预备知识——从form表单说起"><a href="#预备知识——从form表单说起" class="headerlink" title="预备知识——从form表单说起"></a>预备知识——从form表单说起</h4><p>form表单收集数据，并且把数据提交到后端，其中的action属性可以填写要提交到的网址，其中的method属性可以填写get或者post来确定请求的类型；注意input一定要有name属性。</p>
+<h4 id="get和post请求的区别主要有两点"><a href="#get和post请求的区别主要有两点" class="headerlink" title="get和post请求的区别主要有两点"></a>get和post请求的区别主要有两点</h4><p>1.get请求的会将提交的数据显示在url的后面，post请求不会，所以post请求的更安全一些</p>
+<p>2.get请求有数据的上限，post请求没有。</p>
+<p>Ajax发送数据的五个步骤:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs ajax">创建对象：<br>var httprequest &#x3D; new XMLHttprequest();<br><br>设置请求方式和请求地址：<br>httprequest.open(&quot;GET&quot;,&quot;liujing&quot;,true);<br><br>发送请求：<br>httprequest.send()<br><br>监听状态变化：<br>httprequest.onreadystatechange &#x3D; function(ev2)&#123;<br>if(httprequest.readyState &#x3D;&#x3D;&#x3D; 4)&#123;<br>&#x2F;&#x2F;等于4就说明4个状态都完成了<br>	if(httprequest.status&gt;&#x3D;200&amp;&amp;httprequest.status&lt;300||httprequest.status&#x3D;&#x3D;&#x3D;304)&#123;<br>	console.log(&quot;接受到服务器返回的数据&quot;);<br>	&#125;else&#123;<br>	console.log(&quot;没有接受到服务器返回的数据&quot;);<br>	&#125;<br>&#125;<br>&#125;<br><br>处理返回结果<br><br><br>注意点：在send请求的时候一定要写请求头(setRequestHeader)，里面的内容不用修改<br>xmlhttp.open(&quot;POST&quot;,&quot;ajax_test.asp&quot;,true);<br>xmlhttp.setRequestHeader(&quot;Content-type&quot;,&quot;application&#x2F;x-www-form-urlencoded&quot;);<br>xmlhttp.send(&quot;fname&#x3D;Bill&amp;lname&#x3D;Gates&quot;);<br></code></pre></td></tr></table></figure>
 
 
     </section>
@@ -182,7 +188,7 @@
       
 <nav class="nav">
   
-    <a href="/2020/04/05/Get%20vs%20Post/"><i class="iconfont iconleft"></i>Ajax</a>
+    <a href="/2020/04/06/Springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="iconfont iconleft"></i>springboot</a>
   
   
     <a href="/2020/03/28/Springboot/">nodejs<i class="iconfont iconright"></i></a>
@@ -209,7 +215,7 @@
     
     
     
-    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+    <a href="tencent://message/?Menu=yes&uin=3426939681 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
       onMouseOut="this.style.color='#33333D'">
       <i class="iconfont footer-social-item  iconQQ "></i>
     </a>
