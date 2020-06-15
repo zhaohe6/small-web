@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>c++期末复习样题解析 - Blog-zhaohe</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  <meta name="keywords" content="zhaohe, hexo-theme-zhaoo,"> 
+  
+  <meta name="description" content="this blog is about how to study SQL and Java,一·选择题
+第二题解析：引用是一个变量的别名，所以一定..."> 
+  
+  <meta name="author" content="Zhao He"> 
+
+  
+    <link rel="icon" href="/images/icons/bear_16x16.jpg" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {}
+    CONFIG = {
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate_alipay: 'https://pic.izhaoo.com/alipay.jpg',
+      donate_wechat: 'https://pic.izhaoo.com/wechat.jpg',
+      motto: {
+        api: '',
+        default: '多少人需要的不是爱情，只是一个暖心的陪伴啊！'
+      },
+      galleries: {
+        enable: 'true'
+      },
+      fab: {
+        enable: 'true',
+        alwaysShow: 'false'
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  <nav class="menu">
+  <div class="menu-close">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <ul class="menu-content">
+    
+    
+    
+    
+    <li class="menu-item"><a href="/ "> 首页</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/galleries "> 摄影</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/archives "> 归档</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/tags "> 标签</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/categories "> 分类</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/about "> 关于</a></li>
+    
+  </ul>
+  <div class="menu-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image14.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">c++期末复习样题解析</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-06-15</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2590</span>
+    </div>
+  </div>
+</section>
+  <section class="main">
+    <section class="content">
+      <p>一·选择题</p>
+<p>第二题解析：引用是一个变量的别名，所以一定是把一个变量赋值给一个引用，而不能把一个常量赋值给一个引用，这样违背了引用的定义。</p>
+<p>第五题解析：友元概念的理解，友元函数不是一个类里面的东西，这个函数是类 外部的一个东西，但是他的特殊之处在于可以通过入口参数传递进来的对象名访问类里面的成员变量(包括私有成员)。</p>
+<p>下面是一个友元函数的例子：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>&#123;</span><br>	<span class="hljs-keyword">private</span>:<br>		<span class="hljs-keyword">int</span> num;<br>	<span class="hljs-keyword">public</span>:<br>		A(<span class="hljs-keyword">int</span> aa)&#123;<br>			num=aa;<br>		&#125;<br>		<br>	<span class="hljs-function"><span class="hljs-keyword">friend</span> <span class="hljs-keyword">void</span> <span class="hljs-title">display</span><span class="hljs-params">(A &amp;a)</span></span>;<br>&#125;;<br>	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">display</span><span class="hljs-params">(A &amp;a)</span></span>&#123;<br>		<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"类A中的变量："</span>&lt;&lt;a.num&lt;&lt;<span class="hljs-built_in">endl</span>;<br>		<br>	&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-function">A <span class="hljs-title">obj1</span><span class="hljs-params">(<span class="hljs-number">6</span>)</span></span>;<br>	<span class="hljs-built_in">display</span>(obj1);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>下面是一个友元类的例子：(类B是类A的友元类，那么类B中的所有成员函数都是可以访问类A中的成员变量的，这里的成员变量也包括私有成员,代码如下)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>;</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>&#123;</span><br>	<span class="hljs-keyword">private</span>:<br>		<span class="hljs-keyword">int</span> num;<br>	<span class="hljs-keyword">public</span>:<br>		A(<span class="hljs-keyword">int</span> aa)&#123;<br>			num=aa;<br>		&#125;<br>		<br>	<span class="hljs-keyword">friend</span> B;<br>&#125;;<br>	<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>&#123;</span><br>	<span class="hljs-keyword">private</span>:<br>		<span class="hljs-keyword">int</span> b;<br>	<span class="hljs-keyword">public</span>:<br>		B(<span class="hljs-keyword">int</span> bb)&#123;<br>			b =bb;<br>		&#125;<br>	<br>		<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">show</span><span class="hljs-params">(A &amp;a)</span></span>&#123;<br>		<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"类A中的变量："</span>&lt;&lt;a.num&lt;&lt;<span class="hljs-built_in">endl</span>;<br>		<br>	&#125;	<br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-function">A <span class="hljs-title">obj1</span><span class="hljs-params">(<span class="hljs-number">6</span>)</span></span>;<br>	<span class="hljs-function">B <span class="hljs-title">obj2</span><span class="hljs-params">(<span class="hljs-number">7</span>)</span></span>;<br>	obj2.show(obj1);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>关于这道题目中所讲述的类A是类B的友元类,类B是类C的友元类，但是A和C并没有什么关系，也不是友元。</p>
+<p>第七题解析：内联函数使用空间换时间的一种手段，一般内联函数函数的函数体内的代码少但是这个函数的调用次数频繁。在类内定义的函数默认是内联函数，加不加inline都一样，如果在类内声明没有加inline在类外定义时加了inline也是内联函数，所以内联函数是可以定义在类内或者类外的。内联函数是在编译时期替换的。</p>
+<p>第八题解析：通常情况下，如果有两个同名变量，一个是全局的，另一个是局部的，那么局部变量在其局部作用与内有较高的优先权，它将屏蔽全局变量。</p>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><span class="hljs-keyword">int</span> num=<span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">int</span> num=<span class="hljs-number">10</span>;<span class="hljs-comment">//</span><br>	<span class="hljs-built_in">cout</span>&lt;&lt;num&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//这个结果是局部变量num的值 为10,当我们不加域运算符的时候，当编译器在当前main函数的作用域中找到了一个叫num的变量的时候，就不会再找全局中的变量了，所以这个结果就是10;</span><br>	<span class="hljs-built_in">cout</span>&lt;&lt;::num&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//加了域运算符之后，这个结果是全局变量num的值 为1 </span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>第九题解析：这道题中有对象数组，和指向对象的指针的数组，对象数组中存放的是实例对象，实例对象是经过构造函数构造出来的，这是必须调用构造函数的，但是指向对象的指针并不是真正的对象，指针知识一个存放地址的东西，至于以后是不是指向对象都是未知的。</p>
+<p>示例代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">student</span>&#123;</span><br>	<span class="hljs-keyword">private</span>:<br>		<span class="hljs-keyword">int</span> id;<br>	<span class="hljs-keyword">public</span>:	<br>	student(<span class="hljs-keyword">int</span> id_=<span class="hljs-number">10</span>)&#123;<br>		id=id_;<br>		<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"一个参数的构造函数被调用 id="</span>&lt;&lt;id&lt;&lt;<span class="hljs-built_in">endl</span>; <br>	&#125;<br>	<br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	student s[<span class="hljs-number">3</span>], *p[<span class="hljs-number">2</span>];<br><span class="hljs-comment">//	for(int i=0;i&lt;2;i++)&#123;</span><br><span class="hljs-comment">//		p[i]=new student(3);</span><br><span class="hljs-comment">//	&#125;</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125; <br><span class="hljs-comment">//这段代码是调用了三次构造函数，当我把15-17行的代码解除注释之后，就是把指针指向了实例对象，这样的话是调用了五次构造函数。</span><br></code></pre></td></tr></table></figure>
+
+<p>第十六题解析：运算符重载是对已有的运算符进行的，不能改变原来运算符的优先级和操作数的个数，更不能自己创造新的运算符。而且不是所有的运算符都可以重载，比如：. /.*/::/Sizeof/?:这五个运算符是不可以重载的。</p>
+<p>第十八题解析：const和*结合的题目，“左指右值”，这句话的意思是说，星号在const的左边就是指针的指向不能变，星号在指针的右边就是指针指向的内容不能变。题目中的BCD选项都是改变了str的指向，这是不对的，A是改变了str指向字符串的内容，这样做是可以的。</p>
+<p>第二十题解析：继承与派生。无论哪种继承方式，基类中的私有成员都是不可以继承的，所以不可以直接访问。基类中的公有成员比较逆来顺受，以什么样的方式继承，公有成员就在派生类中以什么样的身份存在。基类中的保护成员，当继承方式为公有继承是，保护成员比较执着，它依然以保护成员的形式存在派生类中，当以保护继承的方式继承时，保护成员仍以保护成员的形式存在，当以私有继承的方式继承时，保护成员在派生类中就以私有成员的形式存在了。</p>
+
+    </section>
+    <section class="extra">
+      
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+      
+      
+      
+<nav class="nav">
+  
+  
+    <a href="/2020/06/11/js%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%90%86%E8%A7%A3/">js对象的理解<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+    </section>
+    
+      <section class="comments">
+        
+          <div class="btn" id="comments-btn">查看评论</div>
+        
+        
+      </section>
+    
+  </section>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=3426939681 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/zhaohe6/zhaohe6.github.io " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:izhaoo@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  <div class="fab fab-menu">
+    <i class="iconfont iconmenu"></i>
+  </div>
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
+
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
