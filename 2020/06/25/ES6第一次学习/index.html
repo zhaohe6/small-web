@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax初步学习 - Blog-zhaohe</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  <meta name="keywords" content="zhaohe, hexo-theme-zhaoo,"> 
+  
+  <meta name="description" content="this blog is about how to study SQL and Java,一.ES6新增变量声明
+var是没有块级作用域的，而且..."> 
+  
+  <meta name="author" content="Zhao He"> 
+
+  
+    <link rel="icon" href="/images/icons/bear_16x16.jpg" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {}
+    CONFIG = {
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate_alipay: '/images/pay/zhifubao.png',
+      donate_wechat: '/images/pay/wechat.png',
+      motto: {
+        api: '',
+        default: '我在关了灯的床头下，想问问自己的心啊！'
+      },
+      galleries: {
+        enable: 'true'
+      },
+      fab: {
+        enable: 'true',
+        alwaysShow: 'false'
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  <nav class="menu">
+  <div class="menu-close">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <ul class="menu-content">
+    
+    
+    
+    
+    <li class="menu-item"><a href="/ "> 首页</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/galleries "> 摄影</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/archives "> 归档</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/tags "> 标签</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/categories "> 分类</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/about "> 关于</a></li>
+    
+  </ul>
+  <div class="menu-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image16.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Ajax初步学习</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-06-25</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3169</span>
+    </div>
+  </div>
+</section>
+  <section class="main">
+    <section class="content">
+      <p>一.ES6新增变量声明</p>
+<p>var是没有块级作用域的，而且可以重复声明，这样就很容易产生问题，所以ES6中新增了let和const这两种变量的声明方式都是有块级作用域的而且不可以重复声明，这两者的区别是let定义的是变量，const定义的是常量。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//重复声明</span><br><span class="hljs-keyword">var</span> a =<span class="hljs-number">10</span>;<br><span class="hljs-keyword">var</span> a=<span class="hljs-number">11</span>;<br><span class="hljs-built_in">console</span>.log(a);<span class="hljs-comment">//输出11，而且不会报错</span><br><br><span class="hljs-comment">//没有块级作用域</span><br><span class="hljs-keyword">var</span> a =<span class="hljs-number">10</span>;<br>&#123;<br>    <span class="hljs-keyword">var</span> a=<span class="hljs-number">11</span>;<br>&#125;<br><br><span class="hljs-built_in">console</span>.log(a);<span class="hljs-comment">//这段代码依然会输出11，而且不会报错，原因就是用var声明的变量没有块级作用域</span><br><br><span class="hljs-comment">//用let解决</span><br><span class="hljs-keyword">let</span> a =<span class="hljs-number">10</span>;<br>&#123;<br>    <span class="hljs-keyword">let</span> a=<span class="hljs-number">11</span>;<br>&#125;<br><br><span class="hljs-built_in">console</span>.log(a);<span class="hljs-comment">//输出10，结果符合预期</span><br></code></pre></td></tr></table></figure>
+
+<p>点击三个按钮之后的输出结果都是3</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> btn = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"input"</span>);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">3</span>;i++)&#123;<br>            btn[i].onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>                <span class="hljs-built_in">console</span>.log(i);<br>            &#125;<br>        &#125;<br><span class="hljs-comment">//出现这个结果的原因是，在点击之前已经完成了循环，i的值已经到3了</span><br></code></pre></td></tr></table></figure>
+
+<p>解决方法一：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">将<span class="hljs-keyword">var</span>换成<span class="hljs-keyword">let</span><br><span class="hljs-keyword">var</span> btn = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"input"</span>);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">3</span>;i++)&#123;<br>            btn[i].onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>                <span class="hljs-built_in">console</span>.log(i);<br>            &#125;<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<p>解决方法二：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js">闭包的方式解决<br><span class="hljs-keyword">var</span> btn = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"input"</span>);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">3</span>;i++)&#123;<br>            btn[i].onclick = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">num</span>)</span>&#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>                    <span class="hljs-built_in">console</span>.log(num);<br>                &#125;  <br>            &#125;)(i);<br>        &#125;<br><span class="hljs-comment">//每次循环的时候都把i的值临时存储到num中，因为向函数传递参数的时候是值传递，这样就把i的每次循环的值保存在num中</span><br></code></pre></td></tr></table></figure>
+
+<p>二.ES6解构赋值</p>
+<p>1.数组的结构赋值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> [a,b,c=<span class="hljs-number">10</span>] = [<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>];<br><span class="hljs-built_in">console</span>.log(a+<span class="hljs-string">" "</span>+b+<span class="hljs-string">" "</span>+c);<br><span class="hljs-comment">//这两行代码是用右边的数组初始化左边的数组，左边的数组的元素都是变量，而且可以设定默认值，比如上面代码c的默认值为10；</span><br><span class="hljs-comment">//注意undefined和null的区别，undefined是未定义的所以未定义的话，用的就是默认值；但是null是空对象，依然是对象</span><br><span class="hljs-keyword">let</span> [a,b,c=<span class="hljs-number">10</span>] = [<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-literal">null</span>];<br><span class="hljs-built_in">console</span>.log(a+<span class="hljs-string">" "</span>+b+<span class="hljs-string">" "</span>+c);<br><span class="hljs-comment">//3 2 null</span><br><br><span class="hljs-keyword">let</span> [a,b,c=<span class="hljs-number">10</span>] = [<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-literal">undefined</span>];<br><span class="hljs-built_in">console</span>.log(a+<span class="hljs-string">" "</span>+b+<span class="hljs-string">" "</span>+c);<br><span class="hljs-comment">//3 2 10</span><br></code></pre></td></tr></table></figure>
+
+<p>2.对象的结构赋值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"> <span class="hljs-keyword">var</span> person = &#123;<br>     name:<span class="hljs-string">"蔡徐坤"</span>,<br>     age:<span class="hljs-number">18</span><br> &#125;<br> <span class="hljs-keyword">let</span> &#123;name,age&#125; = person;<br><span class="hljs-comment">//注意点前面大括号里面的东西，必须和对象的键是一一对应的，名字要相同；</span><br><span class="hljs-built_in">console</span>.log(name,age);<br></code></pre></td></tr></table></figure>
+
+<p>3.字符串的结构赋值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"> <span class="hljs-keyword">var</span> [a,b,c]=<span class="hljs-string">"hello"</span>;<br><span class="hljs-built_in">console</span>.log(a+<span class="hljs-string">" "</span>+b+<span class="hljs-string">" "</span>+c);<br><span class="hljs-comment">//输出 h e l</span><br></code></pre></td></tr></table></figure>
+
+<p>4.数组的遍历</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> arr=[<span class="hljs-string">"狄仁杰"</span>,<span class="hljs-string">"凯皇"</span>,<span class="hljs-string">"狂铁"</span>,<span class="hljs-string">"不知火舞"</span>];<br><span class="hljs-comment">//一般的循环</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;arr.length;i++)&#123;<br>    <span class="hljs-built_in">console</span>.log(i+<span class="hljs-string">":"</span>+arr[i]);<br>&#125;<br><span class="hljs-comment">//for in 循环</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> arr)&#123;<br>    <span class="hljs-built_in">console</span>.log(i+<span class="hljs-string">":"</span>+arr[i]);<br>&#125;<br><span class="hljs-comment">//for of 循环，注意这里的i就是值，不是索引</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> arr)&#123;<br>    <span class="hljs-built_in">console</span>.log(i);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>5.字符串拼接</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> price = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">var</span> num = <span class="hljs-number">20</span>;<br><span class="hljs-built_in">document</span>.body.innerHTML=<span class="hljs-string">`总价是:<span class="hljs-subst">$&#123;price*num&#125;</span>`</span>;<br><span class="hljs-comment">//注意这里不是单引号而是反引号</span><br></code></pre></td></tr></table></figure>
+
+<p>三.函数扩充</p>
+<p>1.箭头函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"box"</span>).onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-comment">//箭头函数的this永远指向最近一层作用域的this</span><br>    setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">this</span>.style.backgroundColor = <span class="hljs-string">`rgb(<span class="hljs-subst">$&#123;<span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random()*<span class="hljs-number">255</span>)&#125;</span>,<span class="hljs-subst">$&#123;<span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random()*<span class="hljs-number">255</span>)&#125;</span>,<span class="hljs-subst">$&#123;<span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random()*<span class="hljs-number">255</span>)&#125;</span>)`</span>              <br>    &#125;, <span class="hljs-number">1000</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.设置默认参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params">name=<span class="hljs-string">"zhaohe"</span></span>)</span>&#123;<br>    alert(name);<br>&#125;<br>fun();<br><span class="hljs-comment">//依然会弹出  zhaohe</span><br></code></pre></td></tr></table></figure>
+
+<p>四.扩展运算符</p>
+<p>1.复制数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"> <span class="hljs-keyword">var</span> arr1 = [<span class="hljs-string">"狄仁杰"</span>,<span class="hljs-string">"蔡文姬"</span>,<span class="hljs-string">"貂蝉"</span>];<br><span class="hljs-keyword">var</span> arr2 = [...arr1];<br><span class="hljs-comment">//地址不同，修改arr2中的元素不会修改原数组的元素</span><br>arr2[<span class="hljs-number">0</span>] = <span class="hljs-string">"凯"</span>;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"arr2:"</span>+arr2);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"arr1:"</span>+arr1);<br></code></pre></td></tr></table></figure>
+
+<p>2.参数传递</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> arr = [<span class="hljs-string">"狄仁杰"</span>,<span class="hljs-string">"蔡文姬"</span>,<span class="hljs-string">"貂蝉"</span>];<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span> (<span class="hljs-params">a,b,c</span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(a);<br>    <span class="hljs-built_in">console</span>.log(b);<br>    <span class="hljs-built_in">console</span>.log(c);<br>&#125;<br><span class="hljs-comment">//ES6新方式传递参数</span><br>show(...arr);<br><span class="hljs-comment">//原来的方式传递参数</span><br>show(arr[<span class="hljs-number">0</span>],arr[<span class="hljs-number">1</span>],arr[<span class="hljs-number">2</span>]);<br></code></pre></td></tr></table></figure>
+
+<p>3.剩余参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params">a,b,...args</span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(a);<br>    <span class="hljs-built_in">console</span>.log(b);<br>    <span class="hljs-built_in">console</span>.log(args);<br>&#125;<br><br>fun(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>);<br><span class="hljs-comment">/*结果：1</span><br><span class="hljs-comment">2</span><br><span class="hljs-comment">(5) [3, 4, 5, 6, 7]</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+
+    </section>
+    <section class="extra">
+      
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="/images/pay/zhifubao.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+      
+      
+      
+<nav class="nav">
+  
+  
+    <a href="/2020/06/17/c++%E6%9C%9F%E6%9C%AB%E8%80%83%E7%82%B9/">c++期末部分考点<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+    </section>
+    
+      <section class="comments">
+        
+          <div class="btn" id="comments-btn">查看评论</div>
+        
+        
+      </section>
+    
+  </section>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=3426939681 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/zhaohe6/zhaohe6.github.io " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:3426939681@qq.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  <div class="fab fab-menu">
+    <i class="iconfont iconmenu"></i>
+  </div>
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
+
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
