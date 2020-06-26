@@ -149,7 +149,7 @@
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-06-07</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4219</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4619</span>
     </div>
   </div>
 </section>
@@ -189,6 +189,11 @@
 
 <p>6.post请求代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs nodejs">var http &#x3D; require(&quot;http&quot;);<br>var querystring &#x3D; require(&quot;querystring&quot;);<br>var form&#x3D;&quot;&lt;form method&#x3D;post&gt;&quot;+<br>    &quot;name:&lt;input type&#x3D;&#39;text&#39; name&#x3D;&#39;name&#39;&#x2F;&gt;&quot;+&quot;&lt;br&#x2F;&gt;&quot;+<br>    &quot;age:&lt;input type&#x3D;&#39;text&#39; name&#x3D;&#39;age&#39;&#x2F;&gt;&quot;+&quot;&lt;br&#x2F;&gt;&quot;+<br>    &quot;&lt;input type&#x3D;submit value&#x3D;提交&gt;&quot;+<br>    &quot;&lt;&#x2F;form&gt;&quot;;<br>http.createServer(function(require,responce)&#123;<br>    var data&#x3D;&quot;&quot;;<br>    require.on(&quot;data&quot;,function(_d)&#123;<br>        data+&#x3D;_d;<br>    &#125;)<br>    require.on(&quot;end&quot;,function()&#123;<br>        data &#x3D; querystring.parse(data);<br>        console.log(data);<br>        responce.writeHead(200,&#123;&quot;Content-Type&quot;:&quot;text&#x2F;html;charset&#x3D;utf-8&quot;&#125;);<br>        responce.write(form);<br>        responce.end();<br>    &#125;);  <br>&#125;).listen(1111);<br></code></pre></td></tr></table></figure>
+
+<p>7.espress框架</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs nodejs">var express &#x3D; require(&quot;express&quot;);<br>&#x2F;&#x2F; console.log(express);<br>var app&#x3D;express();<br>&#x2F;&#x2F;http:&#x2F;&#x2F;localhost:1718&#x2F;123 用浏览器访问这个网站<br>app.get(&quot;&#x2F;123&quot;,function(req,res)&#123;<br>    res.send(&quot;第一个服务创建成功&quot;);<br><br>&#125;);<br>&#x2F;&#x2F;输出在控制台的内容<br>app.listen(1718,function()&#123;<br>    console.log(&quot;1718端口正在启动!!!&quot;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+
     </section>
     <section class="extra">
       
