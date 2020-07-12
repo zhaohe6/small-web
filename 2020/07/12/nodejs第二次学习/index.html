@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>nodejs第二次学习 - Blog-zhaohe</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  <meta name="keywords" content="zhaohe,web,"> 
+  
+  <meta name="description" content="this blog is about how to study SQL and Java,一.内置url模块
+12345678910111213..."> 
+  
+  <meta name="author" content="Zhao He"> 
+
+  
+    <link rel="icon" href="/images/icons/bear_16x16.jpg" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {}
+    CONFIG = {
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate_alipay: '/images/pay/zhifubao.png',
+      donate_wechat: '/images/pay/wechat.png',
+      motto: {
+        api: '',
+        default: '千里之堤，溃于蚁穴！'
+      },
+      galleries: {
+        enable: 'true'
+      },
+      fab: {
+        enable: 'true',
+        alwaysShow: 'false'
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  <nav class="menu">
+  <div class="menu-close">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <ul class="menu-content">
+    
+    
+    
+    
+    <li class="menu-item"><a href="/ "> 首页</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/galleries "> 摄影</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/archives "> 归档</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/tags "> 标签</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/categories "> 分类</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/about "> 关于</a></li>
+    
+  </ul>
+  <div class="menu-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image20.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">nodejs第二次学习</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-07-12</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4321</span>
+    </div>
+  </div>
+</section>
+  <section class="main">
+    <section class="content">
+      <p>一.内置url模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs nodejs">var url&#x3D;require(&quot;url&quot;);<br>&#x2F;&#x2F;将一个url字符串转成对象<br>var obj&#x3D;url.parse(&quot;https:&#x2F;&#x2F;search.bilibili.com&#x2F;all?keyword&#x3D;nodejs&amp;from_source&#x3D;nav_search&quot;);<br>console.log(obj);<br>&#x2F;&#x2F;输出的结果<br>&#x2F;*<br>Url &#123;<br>  protocol: &#39;https:&#39;,<br>  slashes: true,<br>  auth: null,<br>  host: &#39;search.bilibili.com&#39;,<br>  port: null,<br>  hostname: &#39;search.bilibili.com&#39;,<br>  hash: null,<br>  search: &#39;?keyword&#x3D;nodejs&amp;from_source&#x3D;nav_search&#39;,<br>  query: &#39;keyword&#x3D;nodejs&amp;from_source&#x3D;nav_search&#39;,<br>  pathname: &#39;&#x2F;all&#39;,<br>  path: &#39;&#x2F;all?keyword&#x3D;nodejs&amp;from_source&#x3D;nav_search&#39;,<br>  href: &#39;https:&#x2F;&#x2F;search.bilibili.com&#x2F;all?keyword&#x3D;nodejs&amp;from_source&#x3D;nav_search&#39;<br>&#125;<br>*&#x2F;<br>&#x2F;&#x2F;将一个对象转成字符串<br>var string&#x3D;url.format(obj);<br>console.log(string);<br></code></pre></td></tr></table></figure>
+
+<p>二.querystring模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs nodejs">let qs&#x3D;require(&quot;querystring&quot;);<br>&#x2F;&#x2F;第二个参数是键值对用什么分隔，第三个参数是键和值用什么分隔<br>let obj&#x3D;qs.parse(&quot;name&#x3D;zhaohe&amp;ID&#x3D;20195517&amp;sex&#x3D;man&quot;,&quot;&amp;&quot;,&quot;&#x3D;&quot;);<br>console.log(obj);<br>&#x2F;*<br>输出为：<br>[Object: null prototype] &#123; name: &#39;zhaohe&#39;, ID: &#39;20195517&#39;, sex: &#39;man&#39; &#125;<br>*&#x2F;<br><br>&#x2F;&#x2F;第二个参数是键值对用什么分隔，第三个参数是键和值用什么分隔<br>let str&#x3D;qs.stringify(obj,&quot;&amp;&quot;,&quot;&#x3D;&quot;);<br>console.log(str);<br>&#x2F;*<br>输出为：<br>name&#x3D;zhaohe&amp;ID&#x3D;20195517&amp;sex&#x3D;man<br>*&#x2F;<br><br><br>&#x2F;&#x2F;编码和解码的操作<br>let qs&#x3D;require(&quot;querystring&quot;);<br>let x&#x3D;qs.escape(&quot;姓名&#x3D;赵贺&amp;学号&#x3D;20195517&amp;性别&#x3D;男&quot;);<br>console.log(x);<br>&#x2F;&#x2F;%E5%A7%93%E5%90%8D%3D%E8%B5%B5%E8%B4%BA%26%E5%AD%A6%E5%8F%B7%3D20195517%26%E6%80%A7%E5%88%AB%3D%E7%94%B7<br>let xx&#x3D;qs.unescape(x);<br>console.log(xx);<br>&#x2F;&#x2F;姓名&#x3D;赵贺&amp;学号&#x3D;20195517&amp;性别&#x3D;男<br></code></pre></td></tr></table></figure>
+
+<p>三.第三方插件-nodemailer</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs nodejs">&quot;use strict&quot;;<br>const nodemailer &#x3D; require(&quot;nodemailer&quot;);<br><br>&#x2F;&#x2F; async..await is not allowed in global scope, must use a wrapper<br><br>  &#x2F;&#x2F; create reusable transporter object using the default SMTP transport<br>  let transporter &#x3D; nodemailer.createTransport(&#123;<br>    host: &quot;smtp.qq.com&quot;,<br>    port: 465,<br>    secure: true, &#x2F;&#x2F; true for 465, false for other ports<br>    auth: &#123;<br>      user: &#39;3426939681@qq.com&#39;, &#x2F;&#x2F; generated ethereal user<br>      pass: &#39;tqlugreqkvylchfe&#39;, &#x2F;&#x2F; generated ethereal password<br>    &#125;,<br>  &#125;);<br><br>  &#x2F;&#x2F; send mail with defined transport object<br>  let mailobj &#x3D; &#123;<br>    from: &#39;&quot;Fred Foo 👻&quot; &lt;3426939681@qq.com&gt;&#39;, &#x2F;&#x2F; sender address<br>    to: &quot;3426939681@qq.com&quot;, &#x2F;&#x2F; list of receivers<br>    subject: &quot;Hello ✔&quot;, &#x2F;&#x2F; Subject line<br>    &#x2F;&#x2F; text: &quot;赵贺不帅呀&quot;, &#x2F;&#x2F; plain text body<br>    html: &quot;&lt;b&gt;赵贺真帅呀&lt;&#x2F;b&gt;&quot;, &#x2F;&#x2F; html body<br>  &#125;;<br>transporter.sendMail(mailobj,(err,data)&#x3D;&gt;&#123;<br>    console.log(err);<br>    console.log(data);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>四.简易爬虫</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs nodejs">var http &#x3D; require(&quot;https&quot;);<br>var fs &#x3D; require(&quot;fs&quot;);<br>var data&#x3D;&quot;&quot;;<br>http.get(&quot;https:&#x2F;&#x2F;how2j.cn&#x2F;?p&#x3D;23817&quot;,(res)&#x3D;&gt;&#123;<br>    var &#123;statusCode&#125;&#x3D;res;<br>    var type&#x3D;res.headers[&quot;content-type&quot;];<br>    var err&#x3D;null;<br>    if(statusCode!&#x3D;200)&#123;<br>        err&#x3D;new Error(&quot;状态码错误&quot;);<br>    &#125;else if(!&#x2F;^text\&#x2F;html&#x2F;.test(type))&#123;<br>        err&#x3D;new Error(&quot;格式错误&quot;);<br>    &#125;<br>    if(err)&#123;<br>        console.log(err);<br>        res.resume();&#x2F;&#x2F;重置缓存<br>        return false;<br>    &#125;<br>    res.on(&quot;data&quot;,(chunk)&#x3D;&gt;&#123;<br><br>        data+&#x3D;chunk.toString();<br>        console.log(&quot;数据接受中&quot;);<br>    &#125;);<br>    res.on(&quot;end&quot;,()&#x3D;&gt;&#123;<br>        fs.writeFileSync(&quot;C:&#x2F;&#x2F;Users&#x2F;Administrator&#x2F;Desktop&#x2F;前端&#x2F;bilibili.html&quot;,data);<br>        console.log(&quot;数据接收完成&quot;);<br>    &#125;)<br>&#125;).on(&quot;error&quot;,(err)&#x3D;&gt;&#123;<br>    console.log(&quot;数据传输出错&quot;);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>五.前后端分离</p>
+<p>前端：页面的实现，请求的发送，数据的处理</p>
+<p>后端：API接口的实现</p>
+
+    </section>
+    <section class="extra">
+      
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="/images/pay/zhifubao.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+      
+      
+      
+<nav class="nav">
+  
+  
+    <a href="/2020/06/26/cors%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F/">cors解决跨域<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+    </section>
+    
+      <section class="comments">
+        
+          <div class="btn" id="comments-btn">查看评论</div>
+        
+        
+      </section>
+    
+  </section>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=3426939681 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/zhaohe6/zhaohe6.github.io " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:3426939681@qq.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  <div class="fab fab-menu">
+    <i class="iconfont iconmenu"></i>
+  </div>
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
+
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
