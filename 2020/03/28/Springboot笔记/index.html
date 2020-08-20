@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>springboot基本概念 - Blog-zhaohe</title>
+  <title>springboot笔记 - Blog-zhaohe</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
@@ -80,7 +80,7 @@
       donate_wechat: '/images/pay/wechat.png',
       motto: {
         api: '',
-        default: '你的工作重心是什么？'
+        default: '可以没有爱情，可以没有名牌，但不能没有快乐！'
       },
       galleries: {
         enable: 'true'
@@ -143,12 +143,12 @@
   <section class="head">
   <img   class="lazyload" data-original="/images/theme/post-image11.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">springboot基本概念</h1>
+    <h1 class="head-title">springboot笔记</h1>
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-03-28</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1412</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2630</span>
     </div>
   </div>
 </section>
@@ -158,9 +158,9 @@
 <h4 id="2-单体应用"><a href="#2-单体应用" class="headerlink" title="2.单体应用"></a>2.单体应用</h4><p>缺点：牵一发而动全身</p>
 <h4 id="3-关联"><a href="#3-关联" class="headerlink" title="3. 关联"></a>3. 关联</h4><p>Spring Boot快读构建， Spring Cloud连接功能元素 Spring Cloud Data Flow 数据流式处理  </p>
 <h4 id="Spring-Boot的全局配置文件-名字固定"><a href="#Spring-Boot的全局配置文件-名字固定" class="headerlink" title="Spring Boot的全局配置文件,名字固定"></a>Spring Boot的全局配置文件,名字固定</h4><p>1 application. properties</p>
-<p>2 application. y ml 比j son，y ml更适合和做配置文件，以数据为中心</p>
+<p>2 application. yml 比json，xml更适合和做配置文件，以数据为中心</p>
 <p>3 配置文件作用：修改spring boot的默认配置</p>
-<h4 id="4-y-ml语法"><a href="#4-y-ml语法" class="headerlink" title="4. y ml语法"></a>4. y ml语法</h4><p>键值对 冒号之间有空格 以冒号之间的缩进表示层级，左对齐 的表示同一层级 </p>
+<h4 id="4-yml语法"><a href="#4-yml语法" class="headerlink" title="4. yml语法"></a>4. yml语法</h4><p>键值对 ,冒号之间有空格 ,以冒号之间的缩进表示层级，左对齐的表示同一层级 </p>
 <p>大小写敏感</p>
 <p>字面量</p>
 <p>​             k: v 直接写，注意冒号后面的空格，字符串不加单引号或者双引号，如果有特殊需求可以加，其中单引号不会识别转义字符，双引号会识别转义字符。</p>
@@ -175,15 +175,33 @@
 <p>​                        - 元素</p>
 <p>​            行内写法</p>
 <p>​                            数组名： [元素]</p>
-<h4 id="5-spring-boot注解："><a href="#5-spring-boot注解：" class="headerlink" title="5. spring boot注解："></a>5. spring boot注解：</h4><p> @Service, 用于业务服务层<br>@Controller, 用于展现层<br>@Repository, 用于 D A O 层<br>@Component, 通用组件, 它是上面 3 个注解的父注解, 没有明确的角色, 对于普通的组件最好使用@Component 注解 </p>
-<h4 id="从配置文件中获取值的方式"><a href="#从配置文件中获取值的方式" class="headerlink" title="从配置文件中获取值的方式"></a>从配置文件中获取值的方式</h4><p>1.使用@configurationProperties（prefix = “XXX”）将配置文件中的属性映射到当前类，注意要有前缀，而且当前类一定要加上@component注解，这样这个类才会成为容器的组件，否则第一个注解不会发挥作用。<bean></bean>标签的作用也是把一个类加到容器中。</p>
+<h4 id="5-spring-boot注解："><a href="#5-spring-boot注解：" class="headerlink" title="5. spring boot注解："></a>5. spring boot注解：</h4><p>@Service, 用于业务服务层<br>        @Controller, 用于展现层<br>        @Repository, 用于 DAO 层<br>        @Component, 通用组件, 它是上面 3 个注解的父注解, 没有明确的角色, 对于普通的组件最好使用        @Component 注解 </p>
+<h4 id="6-从配置文件中获取值的方式"><a href="#6-从配置文件中获取值的方式" class="headerlink" title="6.从配置文件中获取值的方式"></a>6.从配置文件中获取值的方式</h4><p>1.使用@configurationProperties（prefix = “XXX”）将配置文件中的属性映射到当前类，注意要有前缀，而且当前类一定要加上@component注解，这样这个类才会成为容器的组件，否则第一个注解不会发挥作用。<bean></bean>标签的作用也是把一个类加到容器中。</p>
 <p>如下代码：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"persion"</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">properties</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"lastname"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"???"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-meta">@component</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">persion</span></span>&#123;<br>	<span class="hljs-meta">@value(<span class="hljs-meta-string">"???"</span>)</span>;<br>	<span class="hljs-keyword">private</span> String lastname;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs springboot">@component<br>class persion&#123;<br>	@value(&quot;???&quot;);<br>	private String lastname;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>这两段代码的作用是一样的！                                                                                                                                   2.@value注解（这是一个spring的底层注解）</p>
-<p>@validated注解标注的类说明这个类的属性是需要校验的，@value不注解支持校验，@value注解不支持复杂类型的值的获取</p>
+<p>@value(“”)双引号里面可以填自变量，${配置文件的属性}, #{表达式}</p>
+<p>注意使用@value注解不能批量绑定，而且要结合@component注解一起使用</p>
+<p>@validated注解标注的类说明这个类的属性是需要校验的,，但是@value不支持注解校验，所以需要校验的时候只能用@configurationProperties注解，@value注解不支持复杂类型(比如map集合)的值的获取</p>
+<h4 id="7-导入自定义配置文件的注解"><a href="#7-导入自定义配置文件的注解" class="headerlink" title="7.导入自定义配置文件的注解"></a>7.导入自定义配置文件的注解</h4><p>1.@PropertySource(value = {“classpath:person.properties”})这个注解可以导入自定义的.properties文件，注意结合@ConfigurationProperties(prefix = “xxx”)注解来确定前缀。</p>
+<p>2.@ImportResource(locations = {“classpath:person.xml”})这个注解用来导入.xml文件。</p>
+<p>3.@bean用在方法的上面，用来表示把这个方法的返回值添加到容器中。</p>
+<h4 id="8-自动配置原理"><a href="#8-自动配置原理" class="headerlink" title="8.自动配置原理"></a>8.自动配置原理</h4><h4 id="9-日志框架分类"><a href="#9-日志框架分类" class="headerlink" title="9.日志框架分类"></a>9.日志框架分类</h4><p>日志门面：SLF4J</p>
+<p>日志实现：logback</p>
+<p><strong>springboot的日志门面和日志实现的选择也是上面的那样</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.slf4j.Logger;<br><span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>    Logger logger = LoggerFactory.getLogger(HelloWorld<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;<br>    logger.info(<span class="hljs-string">"Hello World"</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>每一个日志的实现框架都有自己的配置文件，使用SLF4J日志门面之后，配置文件还是使用原来的实现框架的配置文件</p>
+<p><strong>如何在系统中统一使用SLF4J？</strong></p>
+<p>1.将系统中其他日志框架先排除出去</p>
+<p>2.用中间包来替换原有的日志框架</p>
+<p>3.然后导入SLF4J其他的实现</p>
+<p>日志的使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java">Logger logger = LoggerFactory.getLogger(getClass());<br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">contextLoads</span><span class="hljs-params">()</span> </span>&#123;<br>       <span class="hljs-comment">// System.out.println(person);</span><br>    logger.trace(<span class="hljs-string">"这是trace"</span>);<br>    logger.debug(<span class="hljs-string">"这是debug"</span>);<br>    logger.info(<span class="hljs-string">"这是info"</span>);<br>    logger.warn(<span class="hljs-string">"这是warn"</span>);<br>    logger.error(<span class="hljs-string">"这是error"</span>);<br>    &#125;<br><span class="hljs-comment">//在配置文件中调整日志的级别</span><br>logging.level.com.zhaohe6=trace<br></code></pre></td></tr></table></figure>
+
 
     </section>
     <section class="extra">
