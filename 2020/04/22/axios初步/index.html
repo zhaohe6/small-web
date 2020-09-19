@@ -148,7 +148,7 @@
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-04-22</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1250</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1273</span>
     </div>
   </div>
 </section>
@@ -159,6 +159,7 @@
 <p>nodejs接口</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">var</span> _http = <span class="hljs-keyword">require</span>(<span class="hljs-string">"http"</span>);<br><span class="hljs-keyword">var</span> cors = <span class="hljs-keyword">require</span>(<span class="hljs-string">"cors"</span>);<br><span class="hljs-keyword">var</span> express = <span class="hljs-keyword">require</span>(<span class="hljs-string">"express"</span>);<br><span class="hljs-keyword">var</span> bodyParser = <span class="hljs-keyword">require</span>(<span class="hljs-string">"body-parser"</span>)<br><span class="hljs-keyword">var</span> app = express();<br>app.<span class="hljs-keyword">use</span>(<span class="hljs-title">cors</span>());<br>app.<span class="hljs-keyword">use</span>(<span class="hljs-title">bodyParser</span>.<span class="hljs-title">json</span>());<br>app.get(<span class="hljs-string">"/axios"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(req,res)</span></span>&#123;<br>    res.send(<span class="hljs-string">"ok!!"</span>+req.query.id);<br>&#125;);<br>app.delete(<span class="hljs-string">"/axios/delete"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(req,res)</span></span>&#123;<br>    res.send(<span class="hljs-string">"数据删除成功"</span>+req.query.id)<br>&#125;)<br>app.post(<span class="hljs-string">"/axios/post"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(req,res)</span></span>&#123;<br>    res.json(&#123;<br>        school:<span class="hljs-string">"tjut"</span><br>    &#125;)<br>&#125;)<br>app.listen(<span class="hljs-number">7788</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;<br>    console.log(<span class="hljs-string">"7788端口正在运行!!"</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
 
+<h4 id="请求axios拦截器"><a href="#请求axios拦截器" class="headerlink" title="请求axios拦截器"></a>请求axios拦截器</h4><p>在发出请求之前做一些设置</p>
 
     </section>
     <section class="extra">

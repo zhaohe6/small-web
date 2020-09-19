@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue-router后台管理案例 - Blog-zhaohe</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  <meta name="keywords" content="zhaohe,web,"> 
+  
+  <meta name="description" content="this blog is about how to study SQL and Java,html+js源码
+12345678910111213..."> 
+  
+  <meta name="author" content="Zhao He"> 
+
+  
+    <link rel="icon" href="/images/icons/bear_16x16.jpg" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {}
+    CONFIG = {
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate_alipay: '/images/pay/zhifubao.jpg',
+      donate_wechat: '/images/pay/wechat.png',
+      motto: {
+        api: '',
+        default: '我想在关了灯的床头下问问自己的心啊'
+      },
+      galleries: {
+        enable: 'true'
+      },
+      fab: {
+        enable: 'true',
+        alwaysShow: 'false'
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  <nav class="menu">
+  <div class="menu-close">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <ul class="menu-content">
+    
+    
+    
+    
+    <li class="menu-item"><a href="/ "> 首页</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/galleries "> 摄影</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/archives "> 归档</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/tags "> 标签</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/categories "> 分类</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/about "> 关于</a></li>
+    
+  </ul>
+  <div class="menu-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image19.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">vue-router后台管理案例</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-09-19</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>5633</span>
+    </div>
+  </div>
+</section>
+  <section class="main">
+    <section class="content">
+      <p>html+js源码</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><code class="hljs xquery">&lt;!DOCTYPE html&gt;<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="xml">    </span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span></span><br><span class="xml">    </span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="xml">    </span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>vue-5<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="xml">    </span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="xml">    </span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./axios.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="xml">    </span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./vue-router.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="xml">    </span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./vue-5style.css"</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="xml">    </span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span></span><br><span class="xml">        <span class="hljs-comment">&lt;!-- 路由站位符 --&gt;</span></span><br><span class="xml">        </span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml">    </span><br><span class="xml">    </span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="xml">        const App=</span><span class="xquery">&#123;</span><br><span class="xquery">            template:`</span><br><span class="xquery">            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="xquery">                <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>传智后台管理系统<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span></span><br><span class="xquery">                <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"left"</span>&gt;</span></span></span><br><span class="xquery">                <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span></span><br><span class="xquery">                    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/user"</span>&gt;</span>用户管理<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span>&lt;/li&gt;</span><br><span class="xquery">                    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/power"</span>&gt;</span>权限管理<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span>&lt;/li&gt;</span><br><span class="xquery">                    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/goods"</span>&gt;</span>商品管理<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span>&lt;/li&gt;</span><br><span class="xquery">                    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/order"</span>&gt;</span>订单管理<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span>&lt;/li&gt;</span><br><span class="xquery">                    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/sys"</span>&gt;</span>系统设置<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span>&lt;/li&gt;</span><br><span class="xquery">                &lt;/ul&gt;</span><br><span class="xquery">                &lt;/div&gt;</span><br><span class="xquery">                <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"right"</span>&gt;</span></span></span><br><span class="xquery">                    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span></span></span><br><span class="xquery">                &lt;/div&gt;   </span><br><span class="xquery">            &lt;/div&gt;</span><br><span class="xquery">            `</span><br><span class="xquery">        &#125;</span><br><span class="xml">        const user=</span><span class="xquery">&#123;</span><br><span class="xquery">            template:`</span><br><span class="xquery">            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="xquery">            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>用户管理列表<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span></span><br><span class="xquery">            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span></span></span><br><span class="xquery">                <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span></span></span><br><span class="xquery">                    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span></span></span><br><span class="xquery">                        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>编号<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span></span><br><span class="xquery">                        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>姓名<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span></span><br><span class="xquery">                        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>年龄<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span></span><br><span class="xquery">                        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>操作<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span></span><br><span class="xquery">                    &lt;/tr&gt;</span><br><span class="xquery">                &lt;/thead&gt;</span><br><span class="xquery">                <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span></span></span><br><span class="xquery">                    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"item in info"</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="xquery">&#123;&#123;<span class="hljs-type">item</span><span class="hljs-built_in">.id</span>&#125;</span></span><span class="xml">&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><span class="xquery"><span class="xquery">&#123;&#123;<span class="hljs-type">item</span><span class="hljs-built_in">.name</span>&#125;</span></span><span class="xml">&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="xml">                        </span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;item.age&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"detail(item.id)"</span>&gt;</span>详情<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="xml">                <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span></span><br><span class="xml">            </span><br><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><span class="xml"> </span><br><span class="xml">            `,</span><br><span class="xml">            data()</span><span class="xquery">&#123;</span><br><span class="xquery">                <span class="hljs-keyword">return</span> &#123;</span><br><span class="xquery">                    info:[<span class="hljs-built_in">&#123;id</span>:<span class="hljs-number">1</span><span class="hljs-built_in">,name</span>:<span class="hljs-string">"liuliu"</span>,age:<span class="hljs-number">18</span>&#125;</span><span class="xml">,</span><br><span class="xml">                        </span><span class="xquery"><span class="hljs-built_in">&#123;id</span>:<span class="hljs-number">2</span><span class="hljs-built_in">,name</span>:<span class="hljs-string">"木木"</span>,age:<span class="hljs-number">17</span>&#125;</span><span class="xml">,</span><br><span class="xml">                        </span><span class="xquery"><span class="hljs-built_in">&#123;id</span>:<span class="hljs-number">3</span><span class="hljs-built_in">,name</span>:<span class="hljs-string">"lily"</span>,age:<span class="hljs-number">19</span>&#125;</span><span class="xml">]</span><br><span class="xml">                &#125;</span><br><span class="xml">            &#125;,</span><br><span class="xml">           methods:</span><span class="xquery">&#123;</span><br><span class="xquery">               detail:function<span class="hljs-built_in">(id</span>)&#123;</span><br><span class="xquery">                this.<span class="hljs-variable">$router</span>.push(<span class="hljs-string">"/detail/"</span><span class="hljs-built_in">+id</span>)</span><br><span class="xquery">               &#125;</span><br><span class="xml">           &#125; </span><br><span class="xml">        &#125;</span><br><span class="xml">        const detail=</span><span class="xquery">&#123;</span><br><span class="xquery">            props:[<span class="hljs-string">"id"</span>],</span><br><span class="xquery">            template:`</span><br><span class="xquery">            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="xquery">                <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>用户ID为: </span><span class="xquery">&#123;<span class="hljs-built_in">&#123;id</span>&#125;</span></span><span class="xml">&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span><br>                <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"goBack"</span>&gt;</span>返回<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br>            &lt;/div&gt;`,<br>            methods:&#123;<br>                goBack:function()&#123;<br>                    this.<span class="hljs-variable">$router</span>.go(-<span class="hljs-number">1</span>);<br>                &#125;<br>            &#125;<br>        &#125;<br>        const power=&#123;<br>            template:`<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>我是权限管理<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span>`<br>        &#125;<br>        const <span class="hljs-keyword">order</span>=&#123;<br>            template:`<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>我是订单管理<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span>`<br>        &#125;<br>        const goods=&#123;<br>            template:`<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>我是商品管理<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span>`<br>        &#125;<br>        const sys=&#123;<br>            template:`<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>我是系统设置<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span>`<br>        &#125;<br>        <br>        const router = new VueRouter(&#123;<br>            routes:[<br>                <span class="hljs-built_in">&#123;path</span>:<span class="hljs-string">"/"</span>,component:App,redirect:<span class="hljs-string">"/user"</span>,children:[<br>                    <span class="hljs-built_in">&#123;path</span>:<span class="hljs-string">"/user"</span>,component:user&#125;,<br>                    <span class="hljs-built_in">&#123;path</span>:<span class="hljs-string">"/detail/:id"</span>,component:detail,props:true&#125;,<br>                    <span class="hljs-built_in">&#123;path</span>:<span class="hljs-string">"/power"</span>,component:power&#125;,<br>                    <span class="hljs-built_in">&#123;path</span>:<span class="hljs-string">"/goods"</span>,component:goods&#125;,<br>                    <span class="hljs-built_in">&#123;path</span>:<span class="hljs-string">"/order"</span>,component:order&#125;,<br>                    <span class="hljs-built_in">&#123;path</span>:<span class="hljs-string">"/sys"</span>,component:sys&#125;,<br>                ]&#125;<br>            ]<br>        &#125;)<br>        const vm = new Vue(&#123;<br>            el:<span class="hljs-string">"#app"</span>,<br>            data:&#123;<br><br>            &#125;,<br>            router:router<br>        &#125;)<br>    &lt;/script&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure>
+
+<p>css样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs css">*&#123;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-selector-tag">h1</span>&#123;<br>    <span class="hljs-attribute">text-align</span>: center;<br>    <span class="hljs-attribute">background-color</span>: darkslategray;<br>&#125;<br><span class="hljs-selector-id">#left</span>&#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">10%</span>;<br>    <span class="hljs-attribute">background-color</span>: darkgrey;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">80vh</span>;<br>    <span class="hljs-attribute">float</span>: left;<br>&#125;<br><span class="hljs-selector-id">#left</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;<br>    <span class="hljs-attribute">list-style</span>: none;<br>    <span class="hljs-attribute">font-size</span>: large;<br>    <span class="hljs-attribute">background-color</span>: firebrick;<br>    <span class="hljs-attribute">text-align</span>: center;<br>    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">50px</span>;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> wheat solid;<br>    <span class="hljs-attribute">cursor</span>: pointer;<br>&#125;<br><span class="hljs-selector-tag">a</span>,<span class="hljs-selector-tag">h1</span>&#123;<br>    <span class="hljs-attribute">color</span>: white;<br>&#125;<br><span class="hljs-selector-tag">h2</span>,<span class="hljs-selector-tag">h3</span>&#123;<br>    <span class="hljs-attribute">text-align</span>: center;<br>&#125;<br><span class="hljs-selector-id">#right</span>&#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">90%</span>;<br>    <span class="hljs-attribute">float</span>: right;<br>    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">245</span>, <span class="hljs-number">189</span>, <span class="hljs-number">245</span>);<br>&#125;<br><span class="hljs-selector-tag">table</span>&#123;<br>    <span class="hljs-attribute">border-collapse</span>: collapse;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> auto;<br>&#125;<br><span class="hljs-selector-tag">td</span>,<span class="hljs-selector-tag">th</span>&#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">text-align</span>: center;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;<br>    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">50px</span>;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> black solid;<br>&#125;<br><span class="hljs-selector-tag">button</span>&#123;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">50px</span> auto;<br>    <span class="hljs-attribute">display</span>: block;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">30px</span>;<br>    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(blue,pink);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+    </section>
+    <section class="extra">
+      
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="/images/pay/zhifubao.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+      
+      
+      
+<nav class="nav">
+  
+  
+    <a href="/2020/07/12/nodejs%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%AD%A6%E4%B9%A0/">nodejs邮件和爬虫<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+    </section>
+    
+      <section class="comments">
+        
+          <div class="btn" id="comments-btn">查看评论</div>
+        
+        
+      </section>
+    
+  </section>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=3426939681 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/zhaohe6/zhaohe6.github.io " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:3426939681@qq.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  <div class="fab fab-menu">
+    <i class="iconfont iconmenu"></i>
+  </div>
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
+
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
