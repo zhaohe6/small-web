@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>指针练习题 - Blog-zhaohe</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  <meta name="keywords" content="zhaohe,web,"> 
+  
+  <meta name="description" content="this blog is about how to study SQL and Java,指针练习题1． 若有说明：int a=2, p=&amp;am..."> 
+  
+  <meta name="author" content="Zhao He"> 
+
+  
+    <link rel="icon" href="./source/images/icons/SIPC.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="./source/images/icons/SIPC.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="./source/images/icons/SIPC.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="./source/images/icons/SIPC.png" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="./source/images/icons/SIPC.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {}
+    CONFIG = {
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate_alipay: '/images/pay/zhifubao.jpg',
+      donate_wechat: '/images/pay/wechat.png',
+      motto: {
+        api: '',
+        default: '我想在关了灯的床头下问问自己的心啊'
+      },
+      galleries: {
+        enable: 'true'
+      },
+      fab: {
+        enable: 'true',
+        alwaysShow: 'false'
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  <nav class="menu">
+  <div class="menu-close">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <ul class="menu-content">
+    
+    
+    
+    
+    <li class="menu-item"><a href="/ "> 首页</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/galleries "> 摄影</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/archives "> 归档</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/tags "> 标签</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/categories "> 分类</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/about "> 关于</a></li>
+    
+  </ul>
+  <div class="menu-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">指针练习题</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-10-28</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1869</span>
+    </div>
+  </div>
+</section>
+  <section class="main">
+    <section class="content">
+      <h3 id="指针练习题"><a href="#指针练习题" class="headerlink" title="指针练习题"></a>指针练习题</h3><p>1． 若有说明：int a=2, <em>p=&amp;a, <em>q=p;，则以下非法的赋值语句是（）。</em></em></p>
+<p>A． p=q;      B． <em>p=</em>q;    C． a=*q;     D． q=a;</p>
+<p><strong>2． 若定义：int a=511, *b=&amp;a；，则printf(“%d\n”, *b);的输出结果为：</strong></p>
+<p> A． 无确定值    B． a的地址    C． 512      D． 511</p>
+<p><strong>3． 已有定义　int a=2, *p1=&amp;a, *p2=&a; 下面不能正确执行的赋值语句是（）。</strong></p>
+<p>A． a=<em>p1+<em>p2;   B． p1=a;     C． p1=p2;     D． a=</em>p1</em>(*p2);</p>
+<p><strong>4． 若有说明语句：int a, b, c, *d=&amp;c；，则能正确从键盘读入三个整数分别赋给变量a、b、c的语句是（）。</strong></p>
+<p>A． scanf(“%d%d%d”, &amp;a, &amp;b, d);</p>
+<p>B． scanf(“%d%d%d”, a, b, d);</p>
+<p>C． scanf(“%d%d%d”, &amp;a, &amp;b, &amp;d);    </p>
+<p>D． scanf(“%d%d%d”, a, b,*d);</p>
+<p><strong>5．若有语句int *p, a=10; p=&a; 下面均代表地址的一组选项是（）。</strong></p>
+<p>A． a, p, <em>&amp;a               B． &amp;</em>a, &amp;a, *p</p>
+<p>C． <em>&amp;p, *p,&amp;a              D．&amp;a, &amp;</em>p, p</p>
+<p><strong>6．以下程序中调用scanf函数给变量a输入数值的方法是错误的，其错误原因是（）。</strong></p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">int</span> *p, *q, a, b;<br>    p=&amp;a;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"input a:"</span>);<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, *p);<br>…  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>A． *p表示的是指针变量p的地址</p>
+<p>B． *p表示的是变量a的值，而不是变量a的地址</p>
+<p>C． *p表示的是指针变量p的值</p>
+<p>D． *p只能用来说明p是一个指针变量</p>
+<p><strong>7．若有说明：int *p, a=1, b; 以下正确的程序段是（）。</strong></p>
+<p>A．p=&b;                 B． scanf(“%d”,&amp;b);</p>
+<p>scanf(“%d”, &amp;p);               *p=b;</p>
+<p>C． p=&b;                 D． p=&b;</p>
+<p>scanf(“%d”, *p);               *p=a;</p>
+<p><strong>8．下面判断正确的是（）。</strong></p>
+<p>A． char *s=”girl”;         等价于 char *s; *s=”girl”;</p>
+<p>B． char s[10]={“girl”};      等价于 char s[10]; s[10]={“girl”};</p>
+<p>C． char *s=”girl”;        等价于  char *s; s=”girl”;</p>
+<p>D． char s[4]= “boy”, t[4]= “boy”;  等价于　char s[4]=t[4]= “boy”</p>
+<p><strong>9．设char *s=”\ta\017bc”；则指针变量s指向的字符串所占的字节数是（）。</strong></p>
+<p>A． 9          B． 5      C． 6       D． 7</p>
+<p><strong>10．以下不能正确进行字符串赋初值的语句是（）。</strong></p>
+<p>A.   char str[5]= “good!”;    </p>
+<p>B． char *str=”good!”;</p>
+<p>C.   char str[]=”good!”; </p>
+<p>D． char str[5]={‘g’, ‘o’,’o’, ‘d’};</p>
+<p>11.编写函数计算字符串的长度</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">myLength</span><span class="hljs-params">(<span class="hljs-keyword">char</span> * str)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">int</span> result = myLength(<span class="hljs-string">"sipc"</span>);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>,result);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">myLength</span><span class="hljs-params">(<span class="hljs-keyword">char</span> * str)</span></span>&#123;<br>	<span class="hljs-keyword">int</span> length=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">while</span>(*str)&#123;<br>		length++;<br>		str++;<br>	&#125;<br>	<span class="hljs-keyword">return</span> length;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>DDBAD      BDCCA</p>
+
+    </section>
+    <section class="extra">
+      
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="/images/pay/zhifubao.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+      
+      
+      
+<nav class="nav">
+  
+  
+    <a href="/2020/10/25/mongoDB/">mongoDB基础<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+    </section>
+    
+      <section class="comments">
+        
+          <div class="btn" id="comments-btn">查看评论</div>
+        
+        
+      </section>
+    
+  </section>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=3426939681 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/zhaohe6/zhaohe6.github.io " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:3426939681@qq.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  <div class="fab fab-menu">
+    <i class="iconfont iconmenu"></i>
+  </div>
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
+
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
