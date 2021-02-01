@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>你不知道的JS中卷第一部分 - Blog-zhaohe</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  <meta name="keywords" content="zhaohe,web,"> 
+  
+  <meta name="description" content="this blog is about how to study SQL and Java,你不知道的JS(中卷)第一部分1.类型是什么，JS中有..."> 
+  
+  <meta name="author" content="Zhao He"> 
+
+  
+    <link rel="icon" href="./source/images/icons/SIPC.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="./source/images/icons/SIPC.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="./source/images/icons/SIPC.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="./source/images/icons/SIPC.png" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="./source/images/icons/SIPC.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {}
+    CONFIG = {
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate_alipay: '/images/pay/zhifubao.jpg',
+      donate_wechat: '/images/pay/wechat.png',
+      motto: {
+        api: '',
+        default: '一切有意义的知识都是为了行动。'
+      },
+      galleries: {
+        enable: 'true'
+      },
+      fab: {
+        enable: 'true',
+        alwaysShow: 'false'
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  <nav class="menu">
+  <div class="menu-close">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <ul class="menu-content">
+    
+    
+    
+    
+    <li class="menu-item"><a href="/ "> 首页</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/galleries "> 摄影</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/archives "> 归档</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/tags "> 标签</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/categories "> 分类</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/about "> 关于</a></li>
+    
+  </ul>
+  <div class="menu-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <section class="head">
+  <img   class="lazyload" data-original="/images/theme/JS.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">你不知道的JS中卷第一部分</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>2021-02-01</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>8041</span>
+    </div>
+  </div>
+</section>
+  <section class="main">
+    <section class="content">
+      <h4 id="你不知道的JS-中卷-第一部分"><a href="#你不知道的JS-中卷-第一部分" class="headerlink" title="你不知道的JS(中卷)第一部分"></a>你不知道的JS(中卷)第一部分</h4><p><strong>1.类型是什么，JS中有几种类型？</strong></p>
+<p>在《你不知道的JS》中是这样定义类型的：对语言引擎和开发人员来说，类型是值的内部特征，它定义了值的行为，以区别于其他值。比如我们会对42和“42”进行不同的操作，一般情况下我们对前者进行的是数学上的四则运算，对后者进行的是字符串的操作。这就决定了这两个东西必须是不同的类型。</p>
+<p>JS中共有六种类型：Undefined，Null，Boolean, Number，String，Object</p>
+<p><strong>2.怎样理解函数和对象，数组和对象？</strong></p>
+<p>函数是可以被调用的对象，函数对象的length属性是声明的形参的个数。数组的length属性是元素的个数。</p>
+<p>示例代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">a,b</span>)</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"123"</span>)<br>&#125;<br><span class="hljs-built_in">console</span>.log(foo.length)<span class="hljs-comment">//2</span><br><br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]<br><span class="hljs-built_in">console</span>.log(arr.length)<span class="hljs-comment">//3</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>3.值和类型</strong></p>
+<p>在JS中变量是没有类型的，只有值才有类型。typeof返回的是这个变量所持有的值的类型，而不是这个变量的类型，因为这个变量可以持有所有的类型。</p>
+<p><strong>4.undefined和undeclared</strong></p>
+<p>undefined是声明了但是没有定义，undeclared是根本就没有声明。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a<br><span class="hljs-built_in">console</span>.log(a)<span class="hljs-comment">//undefined</span><br><span class="hljs-built_in">console</span>.log(b)<span class="hljs-comment">//ReferenceError: b is not defined</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> a)<span class="hljs-comment">//undefined</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> b)<span class="hljs-comment">//undefined</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>typeof一个未声明的变量是不会报错的，这样做有好处也有坏处，好处是这样更安全一下，坏处就是和我们一般情况下的理解不相符，容易用错。下面看一下我们是怎么利用这个好处的。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//这个data是否存在是视情况而定的</span><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> data === <span class="hljs-string">'undefined'</span>)&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'后端没有返回数据'</span>)<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'后端返回数据了'</span>) <br>&#125;<br><span class="hljs-comment">//如果我们按照原来的方式来写的话就是：</span><br><span class="hljs-keyword">if</span>(data)&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'后端没有返回数据'</span>)<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'后端返回数据了'</span>) <br>&#125;<br><span class="hljs-comment">//这样写当后端没有返回data的时候，就会报错，让程序终止运行，这样的后果显然是我们不想看到的。</span><br></code></pre></td></tr></table></figure>
+
+<p>5.数组和字符串</p>
+<p>JS中的字符串是不可以改变的，数组是可以改变的，并且对字符串某个字符的访问用a[1]这种方式在之前的IE浏览器中是不被允许的，最好的方式是a.charAt(1)。字符串不可变是指字符串的成员函数不会改变其原始值，而是创建并返回一个新的字符串，数组是可变的是指，数组的成员函数都是在其原始值上进行操作。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//call 方法第一个参数也是作为函数上下文的对象，但是后面传入的是一个参数列表，而不是单个数组。</span><br><span class="hljs-keyword">var</span> name = <span class="hljs-string">'SIPC'</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Array</span>.prototype.join.call(name,<span class="hljs-string">'-'</span>))<span class="hljs-comment">//S-I-P-C</span><br><span class="hljs-keyword">var</span> res = <span class="hljs-built_in">Array</span>.prototype.map.call(name,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">v</span>)</span>&#123;<br>  <span class="hljs-keyword">return</span> v.toLowerCase()<br>&#125;)<br><span class="hljs-built_in">console</span>.log(res)<span class="hljs-comment">//[ 's', 'i', 'p', 'c' ]</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>许多数组函数用来处理字符串都是很方便的，比如上面的例子。</p>
+</blockquote>
+<p>6.数字</p>
+<p>JS中只有一种数值类型：number，没有整形和浮点型之分，所有的数字都是双精度的。默认情况下，数值都是以十进制的形式显示，特别大或者特别小的数值用指数格式显示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">5E10</span><br><span class="hljs-built_in">console</span>.log(a)<span class="hljs-comment">//50000000000</span><br><span class="hljs-built_in">console</span>.log(a.toExponential())<span class="hljs-comment">//5e+10</span><br></code></pre></td></tr></table></figure>
+
+<p>由于数字值可以使用Number对象进行封装，所以数字值可以调用封装对象中的一些方法，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">5E10</span><br><span class="hljs-comment">//显示小数点后几位</span><br><span class="hljs-built_in">console</span>.log(a.toFixed(<span class="hljs-number">2</span>))<span class="hljs-comment">//50000000000.00</span><br><span class="hljs-comment">//显示的有效位是几位</span><br><span class="hljs-built_in">console</span>.log(a.toPrecision(<span class="hljs-number">3</span>))<span class="hljs-comment">//5.00e+10</span><br></code></pre></td></tr></table></figure>
+
+<p>JS中的进制：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">0o123</span><span class="hljs-comment">//八进制</span><br><span class="hljs-built_in">console</span>.log(a)<br><span class="hljs-keyword">var</span> b = <span class="hljs-number">0b101011</span><span class="hljs-comment">//二进制</span><br><span class="hljs-built_in">console</span>.log(b)<br></code></pre></td></tr></table></figure>
+
+<p>7.在JS中0.1+0.2===0.3吗？</p>
+<p>不是的，js中的0.1并不是精确的0.1，而是一个很接近0.1的数，同理0.2也是，所以他们两个的和，也是一个很接近0.3的数，并不是0.3。那么怎样来判断0.1+0.2和0.3是否相等呢？这里我们引入一个名次，叫做“机器精度”Number.EPSILON。在机器精度这个误差允许的范围内相等，我们就认为是相等的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">0.1</span>+<span class="hljs-number">0.2</span>===<span class="hljs-number">0.3</span>)<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Math</span>.abs(<span class="hljs-number">0.3</span><span class="hljs-number">-0.1</span><span class="hljs-number">-0.2</span>)&lt;<span class="hljs-built_in">Number</span>.EPSILON)<span class="hljs-comment">//true</span><br></code></pre></td></tr></table></figure>
+
+<p>8.void 0 是什么？</p>
+<p>我们可以通过void 0来获取undefined。当然是用void true也可以，或者void 1 ，undefined都是等效的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-keyword">void</span> <span class="hljs-number">0</span><br><span class="hljs-built_in">console</span>.log(a)<span class="hljs-comment">//undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>9.NAN是什么，有什么特点。</p>
+<p>NAN是number类型的一个值，这个值是数字运算出错之后的结果，他值得一提的地方是自身和自身并不相等。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span>/<span class="hljs-number">0</span><br><span class="hljs-built_in">console</span>.log(a)<span class="hljs-comment">//Infinity</span><br><span class="hljs-keyword">var</span> b = <span class="hljs-number">2</span>/<span class="hljs-built_in">console</span>.log()<span class="hljs-comment">//NaN</span><br><span class="hljs-built_in">console</span>.log(b===b)<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>.isNaN(b))<span class="hljs-comment">//</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.is(b, <span class="hljs-literal">NaN</span>))<span class="hljs-comment">//true用来判断一个数是不是NaN</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">-3</span>*<span class="hljs-number">0</span>)<span class="hljs-comment">//-0</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.is(<span class="hljs-number">0</span>,<span class="hljs-number">-0</span>))<span class="hljs-comment">//false</span><br></code></pre></td></tr></table></figure>
+
+<p>10.Date()和Error()</p>
+<blockquote>
+<p>Date()获取时间戳，当前时间，时间格式化。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()<br><span class="hljs-built_in">console</span>.log(a.getTime())<span class="hljs-comment">//1609208370882 时间戳</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Date</span>.now())<span class="hljs-comment">//1609208370891  时间戳</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Date</span>())<span class="hljs-comment">//Tue Dec 29 2020 10:19:30 GMT+0800 (GMT+08:00)</span><br><span class="hljs-built_in">console</span>.log(a.getFullYear(),a.getMonth()+<span class="hljs-number">1</span>,a.getDate(),a.getHours(),a.getMinutes(),a.getSeconds())<br><span class="hljs-comment">//2020 12 29 10 30 26</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Error()主要是为了获得当前运行栈的上下文。栈上下文信息包括函数调用找和产生错误代码的行号，以便于调试。错误对象通常与throw一起使用。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-keyword">if</span>(<span class="hljs-literal">true</span>)&#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'这是一个错误'</span>)<br>  &#125;<br>&#125;<br>foo()<br></code></pre></td></tr></table></figure>
+
+<p>11.强制类型转换</p>
+<p>我们需要掌握字符串，数字，布尔值之间的类型转换的规则。</p>
+<ol>
+<li><p>ToString()和JSON.Stringify()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"xxx"</span>.toString())<span class="hljs-comment">//xxx</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(<span class="hljs-string">"xxx"</span>))<span class="hljs-comment">//"xxx"</span><br><span class="hljs-comment">//一下是不安全的JSON,在对象中会将其忽略，在数组中被设置为null</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fo</span>(<span class="hljs-params"></span>)</span>&#123;&#125;))<span class="hljs-comment">//undefined</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(<span class="hljs-literal">undefined</span>))<span class="hljs-comment">//undefined</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(<span class="hljs-built_in">Symbol</span>()))<span class="hljs-comment">//undefined</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify([<span class="hljs-number">1</span>,<span class="hljs-built_in">Symbol</span>(),<span class="hljs-literal">undefined</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fo</span>(<span class="hljs-params"></span>)</span>&#123;&#125;]))<span class="hljs-comment">//[1,null,null,null]</span><br><span class="hljs-keyword">var</span> obj = &#123;<br>    name:<span class="hljs-string">"zhaohe"</span>,<br>    age: <span class="hljs-literal">undefined</span>,<br>    sayHello: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"hello"</span>)<br>    &#125;,<br>    id: <span class="hljs-built_in">Symbol</span>()<br>&#125;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(obj))<span class="hljs-comment">//&#123;"name":"zhaohe"&#125;</span><br><br><span class="hljs-comment">//下面是JSON.Stringify()的两个有用的参数</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(obj,[<span class="hljs-string">'name'</span>,<span class="hljs-string">'age'</span>]))<span class="hljs-comment">//&#123;"name":"zhaohe","age":19&#125;数组中有什么就序列化什么</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(obj,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">k,v</span>)</span>&#123;<br>    <span class="hljs-keyword">if</span>(k!==<span class="hljs-string">'name'</span>)&#123;<br>        <span class="hljs-keyword">return</span> v<br>    &#125;<br>&#125;))<span class="hljs-comment">//&#123;"age":19,"Id":"20201101"&#125;相当于过滤一下</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(obj,<span class="hljs-literal">null</span>,<span class="hljs-number">3</span>))<span class="hljs-comment">//缩进为3</span><br><span class="hljs-comment">// &#123;</span><br><span class="hljs-comment">//     "name": "zhaohe",</span><br><span class="hljs-comment">//     "age": 19,</span><br><span class="hljs-comment">//     "Id": "20201101"</span><br><span class="hljs-comment">//  &#125;</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(obj,<span class="hljs-literal">null</span>,<span class="hljs-string">"---"</span>))<span class="hljs-comment">//缩进用最后一个参数的代替</span><br><span class="hljs-comment">// &#123;</span><br><span class="hljs-comment">// ---"name": "zhaohe",</span><br><span class="hljs-comment">// ---"age": 19,</span><br><span class="hljs-comment">// ---"Id": "20201101"</span><br><span class="hljs-comment">// &#125;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>JSON.Stringify()和toString()的效果基本相同，只不过序列化的结果总是字符串。</p>
+<p>将一个数字转为字符串可以通过数字+空串的方式，或者直接String(数字)，前者对于对象来说是调用的valueOf()，没有这个函数再调用toString()，后者是直接调用toString().</p>
+</blockquote>
+</li>
+<li><p>ToNumber()</p>
+<p>将一个对象类型的值，转成Number时，会先调用这个对象的valueOf()方法，如果没有就调用这个对象的toString()方法，如果还是没有就会报错(TypeError)或者返回NaN.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>(<span class="hljs-string">'42'</span>))<span class="hljs-comment">//42</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> +<span class="hljs-string">"3.14"</span>)<span class="hljs-comment">//number</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>([<span class="hljs-number">4</span>,<span class="hljs-number">2</span>]))<span class="hljs-comment">//NaN</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>(<span class="hljs-string">"xxx"</span>))<span class="hljs-comment">//NaN</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>([]))<span class="hljs-comment">//0</span><br><span class="hljs-comment">//重写数组的toString()方法</span><br><span class="hljs-keyword">var</span> c  =[<span class="hljs-number">4</span>,<span class="hljs-number">2</span>]<br>c.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.join(<span class="hljs-string">''</span>)<br>&#125;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>(c))<span class="hljs-comment">//42</span><br><br><span class="hljs-comment">//Number()和parseInt()的区别</span><br><span class="hljs-comment">//parseInt只针对字符串，传入true或者对象都不能处理</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>(<span class="hljs-string">"23xxx"</span>))<span class="hljs-comment">//NaN</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">parseInt</span>(<span class="hljs-string">"23xxx"</span>))<span class="hljs-comment">//23</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">parseInt</span>([]))<span class="hljs-comment">//NaN</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">parseInt</span>(<span class="hljs-literal">true</span>))<span class="hljs-comment">//NaN</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>tips：true转换为1，undefined转换为NaN，null转换为0</p>
+<p>将一个纯数字字符串转为数字可以通过字符串-0，来达到目的，或者字符串*1，都是一个道理。</p>
+</blockquote>
+</li>
+<li><p>ToBoolean()</p>
+<p>JS中的值可以分为一下两类：</p>
+<p>1.可以被强制类型转换为false（有false，空串，0，undefined，NaN，null）</p>
+<p>2.其他（被强制类型转换成false的值）</p>
+<p>假值对象是什么？</p>
+<p>假值对象不是封装了假值的对象，而是值一个对象转为boolean后为false，这样的对象有且仅有一个就是document,all这是由DOM提供的方法，并不是JS引擎提供的。</p>
+<p>转换示例如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> arr = []<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Boolean</span>(arr))<span class="hljs-comment">//true</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Boolean</span>(<span class="hljs-string">''</span>))<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">null</span>))<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">undefined</span>))<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">NaN</span>))<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">false</span>))<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Boolean</span>(<span class="hljs-number">0</span>))<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Boolean</span>(<span class="hljs-built_in">document</span>.all()))<span class="hljs-comment">//false 必须在浏览器环境下运行</span><br><br><span class="hljs-comment">//我们常用的类型转换方式是!!</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> !!<span class="hljs-string">""</span>)<span class="hljs-comment">//boolean false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> !![])<span class="hljs-comment">//boolean true</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>我们在if()的中括号中写条件的时候，如果用到不是boolean的情况，建议用！！显示转为boolean这样可以提高代码的可读性，而不应该依赖于隐试类型转换。</p>
+</blockquote>
+</li>
+</ol>
+<p>12.~运算符及应用</p>
+<p>~x = -(x+1)</p>
+<p>~是对一个数所有位取反，包括符号位，等到的数再取补码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(~<span class="hljs-number">42</span>)<span class="hljs-comment">//-43</span><br></code></pre></td></tr></table></figure>
+
+<p>应用：一些函数如：indexOf()在查找失败的时候返回-1，这时候我们通过~运算符就可以将-1转为0，也就是用一个假值0代表失败的情况，其他的情况都是成功。示例代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">search</span>(<span class="hljs-params">x</span>)</span>&#123;<br>    <span class="hljs-keyword">var</span> a = <span class="hljs-string">'hello'</span><br>    <span class="hljs-keyword">if</span>(~a.indexOf(x))&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'success'</span>,a.indexOf(x))<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'fail'</span>)<br>    &#125;<br>&#125;<br>search(<span class="hljs-string">'ol'</span>)<span class="hljs-comment">//fail</span><br>search(<span class="hljs-string">'lo'</span>)<span class="hljs-comment">//success 3</span><br></code></pre></td></tr></table></figure>
+
+<p>13.逻辑运算符&amp;&amp;和||</p>
+<p>这两个逻辑运算其实更适合叫做“选择器运算符”，因为他们的返回值不是布尔类型的，而是左右操作数中的一个！这是不同于C语言的。</p>
+<blockquote>
+<p>&amp;&amp;的优先级高于||，||的优先级高于三目运算符</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">42</span><br><span class="hljs-keyword">var</span> b = <span class="hljs-string">'abc'</span><br><span class="hljs-keyword">var</span> c = <span class="hljs-literal">null</span><br><span class="hljs-keyword">var</span> d = <span class="hljs-literal">undefined</span><br><span class="hljs-built_in">console</span>.log(a||b)<span class="hljs-comment">//42</span><br><span class="hljs-built_in">console</span>.log(a&amp;&amp;b)<span class="hljs-comment">//abc</span><br><span class="hljs-built_in">console</span>.log(c||b)<span class="hljs-comment">//abc</span><br><span class="hljs-built_in">console</span>.log(c&amp;&amp;b)<span class="hljs-comment">//null</span><br><span class="hljs-built_in">console</span>.log(d||d)<span class="hljs-comment">//undefined</span><br><span class="hljs-comment">//所以我们在把这种表达式当成条件的时候，可能和我们原来理解的不一样</span><br><span class="hljs-keyword">if</span>(a||b)<span class="hljs-comment">//将42隐试类型转换为true</span><br>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"123"</span>)<br>&#125;<br><span class="hljs-keyword">if</span>(c||d)<span class="hljs-comment">//将undefined隐试类型转化为false</span><br>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"456"</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>我们可以这样理解：这两个操作符返回的结果是“能够判断这个表达式真假的时候的那个值”，这句话可能有点绕，我们解释一下：||是一真则真，有一个是真的，这个表达式就已经有结果了，&amp;&amp;同类一假则假。console.log(a||b)当第一个数a为真的时候，这个表达式已经可以判断真假了，所以到此结束，返回a。console.log(a&amp;&amp;b)当第一个数为真的时候，并不能判断真假，还要看第二个数，当我们看到第二个数的时候，已经可以判断真假了，到此结束，返回第二个数。其他同理！</p>
+</blockquote>
+<p>14.宽松相等和严格相等</p>
+<p>宽松相等和严格相等我们一般理解他们的区别是：==检查值是否相等，===检查值和类型是否相等。而正确的解释是：==允许强制强制类型转化，而===不允许强制类型转换。</p>
+<p>不同的基本类型之间比较的话，都会把基本类型转为number类型再比较，示例代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'42'</span>==<span class="hljs-number">42</span>)<span class="hljs-comment">//true</span><br><span class="hljs-comment">//解析:‘42’转为数字类型是42,42和42相等</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'42'</span>==<span class="hljs-literal">true</span>)<span class="hljs-comment">//false</span><br><span class="hljs-comment">//解析:‘42’转为数字类型是42，true转为数字类型是1,42和1不相等</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'42'</span>==<span class="hljs-literal">false</span>)<span class="hljs-comment">//false</span><br><span class="hljs-comment">//解析:‘42’转为数字类型是42，false转为数字类型是0,42和0不相等</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">42</span>==<span class="hljs-literal">true</span>)<span class="hljs-comment">//false</span><br><span class="hljs-comment">//解析: true转为数字类型是1,42和1不相等</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">42</span>==<span class="hljs-literal">false</span>)<span class="hljs-comment">//false</span><br><span class="hljs-comment">//解析: false转为数字类型是0,，42和0不相等</span><br><span class="hljs-comment">//以下是undefined和null的比较，undefined和null是相等的，和除了他们两个之外的值是不等的。就是说在==运算符中这两个是一类。</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">undefined</span> == <span class="hljs-literal">null</span>)<span class="hljs-comment">//true</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">undefined</span> == <span class="hljs-string">''</span>)<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">undefined</span> == <span class="hljs-literal">false</span>)<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">undefined</span> == <span class="hljs-number">0</span>)<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> == <span class="hljs-string">''</span>)<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> == <span class="hljs-literal">false</span>)<span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> == <span class="hljs-number">0</span>)<span class="hljs-comment">//false</span><br></code></pre></td></tr></table></figure>
+
+<p>15.逗号操作符</p>
+<p>对它的每个操作数求值，并返回最后一个操作数的值；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> b = (<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>)<br><span class="hljs-built_in">console</span>.log(b)<span class="hljs-comment">//4</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>应用：</p>
+<p>1.一般在for循环中使用，比如一个循环要设置多个变量的增减情况</p>
+<p>2.在返回值里面使用，比如要返回一个值之前需要对这个值进行加一操作</p>
+<p>return(x++,x)</p>
+</blockquote>
+
+    </section>
+    <section class="extra">
+      
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="/images/pay/zhifubao.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+      
+      
+      
+<nav class="nav">
+  
+    <a href="/2021/02/01/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS(%E4%B8%AD%E5%8D%B7)%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/"><i class="iconfont iconleft"></i>你不知道的JS中卷第二部分</a>
+  
+  
+    <a href="/2020/10/25/mongoDB/">mongoDB基础<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+    </section>
+    
+      <section class="comments">
+        
+          <div class="btn" id="comments-btn">查看评论</div>
+        
+        
+      </section>
+    
+  </section>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=3426939681 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/zhaohe6/zhaohe6.github.io " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:3426939681@qq.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  <div class="fab fab-menu">
+    <i class="iconfont iconmenu"></i>
+  </div>
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
+
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
