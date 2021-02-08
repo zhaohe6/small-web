@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>mongoDB基础 - Blog-zhaohe</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  <meta name="keywords" content="zhaohe,web,"> 
+  
+  <meta name="description" content="this blog is about how to study SQL and Java,基础部分数据库就是对数据库进行持久化的，防止电脑重启导..."> 
+  
+  <meta name="author" content="Zhao He"> 
+
+  
+    <link rel="icon" href="/images/icons/SIPC.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/SIPC.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/SIPC.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/SIPC.png" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/SIPC.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {}
+    CONFIG = {
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate_alipay: '/images/pay/zhifubao.jpg',
+      donate_wechat: '/images/pay/wechat.png',
+      motto: {
+        api: '',
+        default: '一切有意义的知识都是为了行动。'
+      },
+      galleries: {
+        enable: 'true'
+      },
+      fab: {
+        enable: 'true',
+        alwaysShow: 'false'
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  <nav class="menu">
+  <div class="menu-close">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <ul class="menu-content">
+    
+    
+    
+    
+    <li class="menu-item"><a href="/ "> 首页</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/galleries "> 摄影</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/archives "> 归档</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/tags "> 标签</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/categories "> 分类</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/about "> 关于</a></li>
+    
+  </ul>
+  <div class="menu-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <section class="head">
+  <img   class="lazyload" data-original="/images/theme/mongodb.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">mongoDB基础</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>2020-10-25</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2800</span>
+    </div>
+  </div>
+</section>
+  <section class="main">
+    <section class="content">
+      <h4 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h4><p>数据库就是对数据库进行持久化的，防止电脑重启导致信息或者数据的丢失，因为程序是跑在内存里的</p>
+<p>非关系数据库（NoSQL）反对SQL，因为有许多程序员不喜欢SQL的这种标准化，因为标准化在一定程度上限制了创新性。</p>
+<p>mongoDB是非关系型数据库中的文档型数据库，为了快速的开发互联网应用。mongoDB中存储的是二进制的JSON，我们可以简单认为是JSON；</p>
+<p>数据库中放集合，集合中放文档，我们是对文档进行crud，集合和数据库都不需要手动创建</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uer &lt;数据库名&gt;</td>
+<td>使用某个数据库</td>
+</tr>
+<tr>
+<td>db</td>
+<td>表示当前所处的数据库</td>
+</tr>
+<tr>
+<td>show dbs</td>
+<td>显示所有的数据库</td>
+</tr>
+<tr>
+<td>show collections</td>
+<td>显示数据库中的所有集合</td>
+</tr>
+<tr>
+<td>db.&lt;集合名&gt;.insert({JSON})</td>
+<td>向集合中插入JSON文档</td>
+</tr>
+<tr>
+<td>db.&lt;集合名&gt;.find({属性名:”值”,属性名:”值”})</td>
+<td>查询这个集合中的文档，传的这几个属性是AND的关系，返回的文档是同时符合这些属性的文档</td>
+</tr>
+<tr>
+<td>db.&lt;集合名&gt;.findOne({属性名:”值”,属性名:”值”})</td>
+<td>返回查到的第一条符合条件的文档，其余的和find（）相同</td>
+</tr>
+<tr>
+<td>db.&lt;集合名&gt;.find().count()</td>
+<td>查看返回的文档的总数</td>
+</tr>
+<tr>
+<td>db.&lt;集合名&gt;.update({age:”19”},{name:”liuliu”,age:”18”,school:”tjut”})</td>
+<td>第一个参数是条件，第二个参数是替换为什么（<strong>不推荐使用</strong>）</td>
+</tr>
+<tr>
+<td>db.&lt;集合名&gt;.update({age:”19”},{$set:{age:”18”}})</td>
+<td>针对某一个属性去修改（<strong>推荐使用</strong>）</td>
+</tr>
+<tr>
+<td>db.&lt;集合名&gt;.remove({})</td>
+<td>删除文档</td>
+</tr>
+<tr>
+<td>db.&lt;集合名&gt;.drop()</td>
+<td>删除集合</td>
+</tr>
+<tr>
+<td>db.student.find({}).sort({age:1})</td>
+<td>将查询结果按照age进行排序，1表示升序，-1是降序</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>ps:</strong> </p>
+<p>1.&lt;&gt;中的内容代表这是一个名称</p>
+<p>2.update在默认情况下之后修改查找到符合条件的第一个，设置multi为true就可以修改多个，updateMany（）会修改查到的所有符合条件的文档。</p>
+<p>3.我们在实际的开发的时候其实是很少用到删除数据库文档操作的，一般的做法是设置一个字段，用来表示这个这个文档是不是被删除，例如用flag=1，来表示这个数据是被删除的，用flag=0来表示这个数据没有被删除的。然后再查询的时候结合flag的值来查询。</p>
+<p>4.内嵌查询必须加引号  eg ：db.user.find({“hobby.cities”:”beijing”})。</p>
+<p>5.我们不会执行不带条件的查询。因为这样的数据会很过，一般要用.limit(n)来限制最多显示n条数据。.skip(n)用于跳过指定数量的数据。</p>
+</blockquote>
+<h4 id="文档之间的关系"><a href="#文档之间的关系" class="headerlink" title="文档之间的关系"></a>文档之间的关系</h4><p>一对一，一对多，多对多</p>
+<h4 id="投影"><a href="#投影" class="headerlink" title="投影"></a>投影</h4><p> db.student.find({},{name:1})    拿到想显示的字段，而不是拿到所有的字段。比如这个查询语句find的第二个参数传了一个name，就表示拿到所有符合条件的文档的name。</p>
+<h4 id="mongoose-对象文档模型库"><a href="#mongoose-对象文档模型库" class="headerlink" title="mongoose(对象文档模型库)"></a>mongoose(对象文档模型库)</h4><p>mongoose是node中的一个模块，用这个模块可以操作mongoDB数据库。把数据库中的文档，映射成nodejs中的对象。mongoose中的Schema(模式结构),就是一个约束，比如值的类型，一条文档有多少键值对。Model：一个Model对应数据库中的集合，Document对应的数据库中的文档。</p>
+<p>连接数据库的代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs js">  <span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">"mongoose"</span>);<br> mongoose.connect(<span class="hljs-string">"mongodb://localhost/student"</span>,&#123;<span class="hljs-attr">useNewUrlParser</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">useUnifiedTopology</span>: <span class="hljs-literal">true</span>&#125;);<br> mongoose.connection.once(<span class="hljs-string">"open"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"数据库连接建立"</span>);<br> &#125;);<br> mongoose.connection.once(<span class="hljs-string">"close"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"数据库连接断开"</span>);<br> &#125;);<br><span class="hljs-keyword">let</span> Schema = mongoose.Schema;<br><span class="hljs-keyword">let</span> stuSchema = <span class="hljs-keyword">new</span> Schema(&#123;<br>        name:<span class="hljs-built_in">String</span>,<br>        age:<span class="hljs-built_in">Number</span>,<br>        address:&#123;<br>            type:<span class="hljs-built_in">String</span>,<br>            <span class="hljs-keyword">default</span>:<span class="hljs-string">"天津理工大学"</span><br>        &#125;<br>  &#125;)<br>  <span class="hljs-comment">//一个Model相当于数据库中的一个集合</span><br> <span class="hljs-keyword">let</span> stuModel = mongoose.model(<span class="hljs-string">"tjutStudents"</span>,stuSchema); <br><span class="hljs-comment">//  stuModel.create(&#123;</span><br><span class="hljs-comment">//      name:"zh",</span><br><span class="hljs-comment">//      age:18,</span><br><span class="hljs-comment">//      address:"南开大学"</span><br><span class="hljs-comment">//  &#125;)</span><br>stuModel.find(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">"zh"</span>&#125;,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err,docs</span>)</span>&#123;<br>    <span class="hljs-comment">// docs是查询到的符合条件的结果，是数组的形式返回</span><br>    <span class="hljs-keyword">let</span> j = <span class="hljs-built_in">JSON</span>.stringify(docs)<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> docs);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> j);<br>&#125;);<br><span class="hljs-comment">// stuModel.updateMany(&#123;name:"zh"&#125;,&#123;$set:&#123;address:"北京邮电大学"&#125;&#125;,function()&#123;</span><br><span class="hljs-comment">//     console.log("数据修改成功");</span><br><span class="hljs-comment">// &#125;)</span><br><br><span class="hljs-comment">// stuModel.countDocuments(&#123;&#125;,function(err,count)&#123;</span><br><span class="hljs-comment">//     console.log(count);</span><br><span class="hljs-comment">// &#125;)</span><br> <span class="hljs-comment">//一般情况下mongoDB数据库只需要连接一次,而且不会轻易断开</span><br><span class="hljs-comment">//  mongoose.disconnect();</span><br></code></pre></td></tr></table></figure>
+
+
+    </section>
+    <section class="extra">
+      
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="/images/pay/zhifubao.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+      
+      
+      
+<nav class="nav">
+  
+    <a href="/2021/02/01/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS(%E4%B8%AD%E5%8D%B7)%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86/"><i class="iconfont iconleft"></i>你不知道的JS中卷第一部分</a>
+  
+  
+    <a href="/2020/09/19/vue-router%E5%90%8E%E5%8F%B0%E6%A1%88%E4%BE%8B/">vue-router后台管理案例<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+    </section>
+    
+      <section class="comments">
+        
+          <div class="btn" id="comments-btn">查看评论</div>
+        
+        
+      </section>
+    
+  </section>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=3426939681 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/zhaohe6/zhaohe6.github.io " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:3426939681@qq.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  <div class="fab fab-menu">
+    <i class="iconfont iconmenu"></i>
+  </div>
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
+
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>

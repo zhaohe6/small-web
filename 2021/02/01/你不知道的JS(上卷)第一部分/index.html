@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>你不知道的JS上卷第一部分 - Blog-zhaohe</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  <meta name="keywords" content="zhaohe,web,"> 
+  
+  <meta name="description" content="this blog is about how to study SQL and Java,你不知道的JS（上卷）第一部分 作用域和闭包1.变量赋..."> 
+  
+  <meta name="author" content="Zhao He"> 
+
+  
+    <link rel="icon" href="/images/icons/SIPC.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/SIPC.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/SIPC.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/SIPC.png" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/SIPC.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_58xq2j9v1id.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {}
+    CONFIG = {
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate_alipay: '/images/pay/zhifubao.jpg',
+      donate_wechat: '/images/pay/wechat.png',
+      motto: {
+        api: '',
+        default: '一切有意义的知识都是为了行动。'
+      },
+      galleries: {
+        enable: 'true'
+      },
+      fab: {
+        enable: 'true',
+        alwaysShow: 'false'
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  <nav class="menu">
+  <div class="menu-close">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <ul class="menu-content">
+    
+    
+    
+    
+    <li class="menu-item"><a href="/ "> 首页</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/galleries "> 摄影</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/archives "> 归档</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/tags "> 标签</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/categories "> 分类</a></li>
+    
+    
+    
+    
+    <li class="menu-item"><a href="/about "> 关于</a></li>
+    
+  </ul>
+  <div class="menu-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <section class="head">
+  <img   class="lazyload" data-original="/images/theme/JS.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">你不知道的JS上卷第一部分</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>2021-02-01</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4063</span>
+    </div>
+  </div>
+</section>
+  <section class="main">
+    <section class="content">
+      <h4 id="你不知道的JS（上卷）第一部分-作用域和闭包"><a href="#你不知道的JS（上卷）第一部分-作用域和闭包" class="headerlink" title="你不知道的JS（上卷）第一部分 作用域和闭包"></a>你不知道的JS（上卷）第一部分 作用域和闭包</h4><p>1.变量赋值操作的剖析</p>
+<p>变量的赋值操作会执行两个动作，首先编译器会在当前的作用域生成一个变量（如果之前没有声明过），然后运行时引擎会在改作用域中查找该变量，如果能找到就会对他进行赋值。</p>
+<p>2.LHS和RHS</p>
+<p>一道练习题帮你理解回顾LHS和RHS</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">a</span>)</span>&#123;<br>  <span class="hljs-keyword">var</span> b = a<br>  <span class="hljs-keyword">return</span> a+b<br>&#125;<br><span class="hljs-keyword">var</span> c = foo(<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+
+<p>（其中LHS执行了三次！RHS执行了四次！）</p>
+<p>3.什么时候出现ReferenceError和TypeError异常？</p>
+<p>RHS在所有的嵌套作用域中都没有查找到所需的变量，引擎就会抛出一个ReferenceError异常。相较之下，当引擎执行RHS查询时，如果在嵌套作用域中没有找到所需的变量，就会在全局作用域中创建一个具有这个名字的变量，然后将这个变量返回给引擎，前提是程序运行在非严格模式下。严格模式下是进制自动或者隐试的创建全局变量。严格模式下也会报错ReferenceError。当RHS成功查询但是对这个变量就行非正当的使用的时候（比如对一个非函数类型的值进行函数执行，应用一个null或者更undefined变量的属性方法）就会返回TypeError。ReferenceError和作用域的判别失败相关，TypeError则代表了作用域判别成功了，但是对结果的 操作是非法的或者不合理的。</p>
+<p>4.词法作用域是什么？</p>
+<p>词法作用域意味着作用域是由书写代码是的位置来决定的，无论函数在哪里被调用，或者它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定。编译的词法分析阶段基本能过知道全部的标识符在哪里以及是如何声明的，从而能预测在执行过程中如何对它们进行查找。JavaScript中有两个机制可以欺骗词法作用域：eval()和with。使用其中任何一个机制都会导致代码的运行速度变慢，不要使用它们。</p>
+<p>5.如何解决全局作用域污染问题？</p>
+<p>方法：在想要隐藏的代码片段外面加上一层函数的封装，这样封装的内容就只能在这个函数内部访问，这个函数内部也就有了自己的作用域，就算这个函数作用域中有和外部相同名称的变量，也是相互不回影响的，相当于与世隔绝。代码如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span><br>&#125;<br>foo()<br><span class="hljs-built_in">console</span>.log(a)<span class="hljs-comment">//2</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>但是这样做还是有瑕疵的，因为foo这个函数也在全局作用域中，而且也会在全局作用域中被调用，那么有没有更好的方式呢？答案是肯定的，进阶代码如下:</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span><br>;(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">b</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> a = b<br>&#125;)(<span class="hljs-number">10</span>)<span class="hljs-comment">//传参</span><br>foo()<span class="hljs-comment">//ReferenceError: foo is not defined</span><br><span class="hljs-built_in">console</span>.log(a)<span class="hljs-comment">//2</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里使用的是函数表达式的方式来解决的，函数表达式的好处就是让foo函数没有在全局作用域中出现，全局作用域中也不能调用foo这个函数。这样这个问题就完美解决了！</p>
+</blockquote>
+<p>6.块级作用域</p>
+<p>一般情况下的JS是只有函数作用域而没有块级作用域的。比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i&lt;<span class="hljs-number">10</span>; i++)&#123;<br>    <span class="hljs-built_in">console</span>.log(i)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其实这个i我们只是想在for循环内部使用而不是在全局作用域中使用，但是我们这样写依然可以在全局作用域中使用i。解决这个问题的方法很简单，就是用let代替var，因为let是有块级作用域的！</p>
+</blockquote>
+<p>还有一种很少见到的情况就是try/catch中的catch分句会创建一个块级作用域，其中声明的变量仅在catch内部有效。</p>
+<p>7.什么是提升，为什么会有提升？</p>
+<p>回忆一下，引擎会在执行JS代码之前首先对代码进行编译，编译阶段一部分工作就是找到所有的声明，明确这些声明的位置，并且把这些声明绑定到相关的作用域中。由此我们很容易发现，编译器比引擎先开始工作，所以在执行JS代码之前，所有的声明就已经都找到了，这样的结果就打破了平时认为JS代码是一行一行执行的观念，就出现了所谓的 “提升” 。</p>
+<blockquote>
+<p>概要：先有声明，后有赋值</p>
+</blockquote>
+<p>对比如下代码，有助于理解：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//代码片段1:</span><br>a = <span class="hljs-number">2</span><br><span class="hljs-keyword">var</span> a<span class="hljs-comment">//提升</span><br><span class="hljs-built_in">console</span>.log(a) <span class="hljs-comment">//输出2</span><br><br><br><span class="hljs-comment">//代码片段2:</span><br><span class="hljs-built_in">console</span>.log(a) <span class="hljs-comment">//输出undefined</span><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span><br><span class="hljs-comment">//声明可以提升 var a 是可以提升的，但是赋值不可以提升，a=2是不能提升的。</span><br></code></pre></td></tr></table></figure>
+
+<p>变量有提升，函数声明也是有提升的，而且函数的声明的提升是高于变量的提升的！在此要注意函数表达式是不会有提升的。 </p>
+<p>8.闭包是什么？</p>
+<p>当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前的词法作用域之外执行。闭包使得函数可以继续访问定义时的词法作用域。如果函数在当前的词法作用域内执行的话，我们习惯上将它理解为RHS，其实这也是闭包。当函数在当前词法作用域之外执行的时候，我们就可以名正言顺的叫它闭包了！</p>
+<p>下面是一个闭包的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">baz</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(a)<br>  &#125;<br>  bar(baz)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span> (<span class="hljs-params">fn</span>)</span>&#123;<br>  fn()<span class="hljs-comment">//妈妈快看,这就是闭包!</span><br>&#125;<br>foo()<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在foo函数内部，声明了一个baz函数，这个函数可以访问foo内部的作用域，然后将baz函数传递给bar函数，并且在bar函数内部调用了baz函数（也就是fn函数），此时baz函数的调用已经脱离了定义时的词法作用域，但是依旧是可以访问定义时词法作用域的变量a，这就是传说中的闭包！</p>
+</blockquote>
+<p><strong>闭包和循环–学了一年JS至今才明白的问题</strong></p>
+<p>首先看这段代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">5</span>;i++)&#123;<br>  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(i)<br>  &#125;,<span class="hljs-number">1000</span>*i)<br>&#125;<br><span class="hljs-comment">//输出结果是5个5</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>延迟函数的回调会在循环结束的时候才执行。所以输出5个5是意料之中的结果。但是我们需要深入剖析一下这个问题，虽然每次迭代的时候都会定义一个函数，但是这5个函数都是使用了一个词法作用域，其实这五个函数中的i都是同一个i，这个i就是共享词法作用域（全局作用域）中的那个i。</p>
+</blockquote>
+<p>如果我们的需求是依次输出0到4，该怎么办？</p>
+<p>代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">5</span>;i++)&#123;<br>  (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">var</span> k = i<br>    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>      <span class="hljs-built_in">console</span>.log(k)<br>    &#125;,<span class="hljs-number">1000</span>*k)<br>  &#125;)()<br>&#125;<br><span class="hljs-comment">//我们在for循环内部加了一层词法作用域，就是我们看到的IIFE，在IIFE中我们定义了一个变量，k，这个k可以存错每次迭代过程中，i的值，每一个迭代都会创建一个新的IIFE所以，一共有五个IIFE，互不干扰，这样的话，我们再次输出k的值，都会在各自的IIFE中查找，找到之后就不会再到最外层的那个全局作用域中找。</span><br></code></pre></td></tr></table></figure>
+
+<p>这段代码还可以简化：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">5</span>;i++)&#123;<br>  (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">k</span>)</span>&#123;<br>    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>      <span class="hljs-built_in">console</span>.log(k)<br>    &#125;,<span class="hljs-number">1000</span>*k)<br>  &#125;)(i)<br>&#125;<br><span class="hljs-comment">//或者</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">5</span>;i++)&#123;<br>    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>      <span class="hljs-built_in">console</span>.log(i)<br>    &#125;,<span class="hljs-number">1000</span>*i)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第一段代码比较好理解，第二段代码中let本身就可以形成块级作用域。至此，问题完美解决！</p>
+</blockquote>
+<p>9.闭包在模块中的应用</p>
+<p>当通过返回一个含有属性引用的对象的方式来将函数传递到词法作用域外部时，我们就已经创造了可以观察和实践闭包的条件！</p>
+<p>看一个模块的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">CoolModule</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> something = <span class="hljs-string">'cool'</span><br>  <span class="hljs-keyword">var</span> another = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doSomething</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(something)<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doAnother</span> (<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(another.join(<span class="hljs-string">'!'</span>))<br>  &#125;<br>  <span class="hljs-keyword">return</span> &#123;<br>    doSomething: doSomething,<br>    doAnother: doAnother<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">var</span> fn = CoolModule()<br>fn.doAnother()<br>fn.doSomething()<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>CoolModule封装了两个变量和两个函数，并且这两个函数可以访问这两个变量，然后将这两个函数返回（暴露），这样在其他的作用域中也就可以访问CoolModule中的两个变量。</p>
+</blockquote>
+<p>如果要更简单的描述，模块模式需要具备两个必要的条件：</p>
+<p>1.必须有外部的封闭函数，该函数必须至少被调用一次（每次调用都会创建一个新的模块实例）</p>
+<p>2.封闭函数必须至少返回一个内部函数，这样内部函数才能在私有作用域中形成闭包，并且可以访问且修改私有的状态。</p>
+
+    </section>
+    <section class="extra">
+      
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="/images/pay/zhifubao.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+      
+      
+      
+<nav class="nav">
+  
+    <a href="/2021/02/06/itheima%E5%8D%9A%E5%AE%A2%E5%AE%9E%E6%88%98%E6%80%BB%E7%BB%93/"><i class="iconfont iconleft"></i>NodeJS项目实战总结</a>
+  
+  
+    <a href="/2021/02/01/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS(%E4%B8%8A%E5%8D%B7)%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/">你不知道的JS上卷第二部分<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+    </section>
+    
+      <section class="comments">
+        
+          <div class="btn" id="comments-btn">查看评论</div>
+        
+        
+      </section>
+    
+  </section>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=3426939681 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/zhaohe6/zhaohe6.github.io " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:3426939681@qq.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Copyright© 2019-2020 | <a target="_blank" href="https://github.com/zhaohe6/zhaohe6.github.io">zhaohe</a> .AllRightsReserved</p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  <div class="fab fab-menu">
+    <i class="iconfont iconmenu"></i>
+  </div>
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
+
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
