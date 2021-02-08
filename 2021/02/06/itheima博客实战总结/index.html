@@ -20,19 +20,19 @@
   <meta name="author" content="Zhao He"> 
 
   
-    <link rel="icon" href="/source/images/icons/SIPC.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="/images/icons/SIPC.png" type="image/png" sizes="16x16">
   
   
-    <link rel="icon" href="./source/images/icons/SIPC.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="images/icons/SIPC.png" type="image/png" sizes="32x32">
   
   
-    <link rel="apple-touch-icon" href="./source/images/icons/SIPC.png" sizes="180x180">
+    <link rel="apple-touch-icon" href="/images/icons/SIPC.png" sizes="180x180">
   
   
-    <meta rel="mask-icon" href="./source/images/icons/SIPC.png" color="#333333">
+    <meta rel="mask-icon" href="/images/icons/SIPC.png" color="#333333">
   
   
-    <meta rel="msapplication-TileImage" content="./source/images/icons/SIPC.png">
+    <meta rel="msapplication-TileImage" content="/images/icons/SIPC.png">
     <meta rel="msapplication-TileColor" content="#000000">
   
 
@@ -148,7 +148,7 @@
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>2021-02-06</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>5375</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>5376</span>
     </div>
   </div>
 </section>
@@ -181,7 +181,7 @@
 <p>9.joi模块用于编写校验规则</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre class=" language-hljs js"><span class="hljs-keyword">const</span> schema = &#123;<br>        username: joi.string().min(<span class="hljs-number">2</span>).max(<span class="hljs-number">12</span>).required().error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'用户名错误'</span>)),<br>        password: joi.string().regex(<span class="hljs-regexp">/^[a-zA-Z0-9]&#123;3,30&#125;$/</span>).required().error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'密码格式不符合要求'</span>)),<br>        email: joi.string().email().required().error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'邮箱格式不符合要求'</span>)),<br>        role: joi.string().valid(<span class="hljs-string">'normal'</span>,<span class="hljs-string">'admin'</span>).required().error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'角色值非法'</span>)),<br>        state: joi.number().valid(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>).required().error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string"><code class="language-hljs js"><span class="hljs-keyword">const</span> schema = &#123;<br>        username: joi.string().min(<span class="hljs-number">2</span>).max(<span class="hljs-number">12</span>).required().error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'用户名错误'</span>)),<br>        password: joi.string().regex(<span class="hljs-regexp">/^[a-zA-Z0-9]&#123;3,30&#125;$/</span>).required().error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'密码格式不符合要求'</span>)),<br>        email: joi.string().email().required().error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'邮箱格式不符合要求'</span>)),<br>        role: joi.string().valid(<span class="hljs-string">'normal'</span>,<span class="hljs-string">'admin'</span>).required().error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'角色值非法'</span>)),<br>        state: joi.number().valid(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>).required().error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'状态值非法'</span>))<br>   &#125;<br>   joi.validate(req.body,schema).then(...)<br></code></pre></td></tr></table></figure>
 
-<h4 id="三、代码规"><a href="#三、代码规" class="headerlink" title="三、代码规"></a>三、代码规</h4><p>1.连接mongodb数据库的文件可以在app.js中引入，连接数据库的文件内容一般是:</p>
+<h4 id="三、代码规范"><a href="#三、代码规范" class="headerlink" title="三、代码规范"></a>三、代码规范</h4><p>1.连接mongodb数据库的文件可以在app.js中引入，连接数据库的文件内容一般是:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre class=" language-hljs js"><span class="hljs-keyword">const</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'config'</span>)<br><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>)<br>mongoose.connect(<span class="hljs-string">`mongodb://<span class="hljs-subst">$&#123;config.get(<span class="hljs-string">"db.user"</span>)&#125;</span>:<span class="hljs-subst">$&#123;config.get(<span class="hljs-string">'db.pwd'</span>)&#125;</span>@<span class="hljs-subst">$&#123;config.get(<span class="hljs-string">'db.host'</span>)&#125;</span>/<span class="hljs-subst">$&#123;config.get(<span class="hljs-string">'db.name'</span>)&#125;</span>`</span>,&#123;<span class="hljs-attr">useNewUrlParser</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">useUnifiedTopology</span>: <span class="hljs-literal">true</span>&#125;)<br>.then(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'数据库连接成功'</span>)<br>&#125;)<br>.catch(<span class="hljs-function">(<span class="hljs-params">reason</span>)=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string"><code class="language-hljs js"><span class="hljs-keyword">const</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'config'</span>)<br><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>)<br>mongoose.connect(<span class="hljs-string">`mongodb://<span class="hljs-subst">$&#123;config.get(<span class="hljs-string">"db.user"</span>)&#125;</span>:<span class="hljs-subst">$&#123;config.get(<span class="hljs-string">'db.pwd'</span>)&#125;</span>@<span class="hljs-subst">$&#123;config.get(<span class="hljs-string">'db.host'</span>)&#125;</span>/<span class="hljs-subst">$&#123;config.get(<span class="hljs-string">'db.name'</span>)&#125;</span>`</span>,&#123;<span class="hljs-attr">useNewUrlParser</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">useUnifiedTopology</span>: <span class="hljs-literal">true</span>&#125;)<br>.then(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'数据库连接成功'</span>)<br>&#125;)<br>.catch(<span class="hljs-function">(<span class="hljs-params">reason</span>)=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'数据库连接失败'</span>,reason)<br>&#125;)<br></code></pre></td></tr></table></figure>
 
 <p>在app.js中引入：require(‘./model/connect’)</p>
